@@ -153,3 +153,7 @@ AI-assisted Operations
 This repository is primarily a personal engineering portfolio and learning project.
 
 If it helps other engineers understand these technologies, then it has achieved an additional goal: sharing knowledge through practical examples and clear documentation.
+
+========================================================================================================
+
+Learning Git Internals - Day 2
