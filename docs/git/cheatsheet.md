@@ -9,3 +9,49 @@ git rev-parse HEAD	          Show current commit SHA
 git diff	                  Compare Working Directory with Index
 git diff --cached	          Compare Index with Last Commit
 find .git/objects -type f | wc -l	Count Git objects
+
+# Git Cheatsheet
+
+## Repository
+
+git init
+
+git clone
+
+git status
+
+---
+
+## Staging
+
+git add .
+
+git restore --staged
+
+git diff
+
+git diff --cached
+
+---
+
+## Commit
+
+git commit
+
+git log
+
+git log --oneline
+
+git show
+
+---
+
+## Internals
+
+git cat-file
+
+git ls-tree
+
+git rev-parse HEAD
+
+find .git/objects -type f | wc -l

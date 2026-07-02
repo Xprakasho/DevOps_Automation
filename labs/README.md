@@ -1,12 +1,37 @@
 
-# Labs
+# Git Labs
 
-## Purpose
+These labs provide hands-on exercises for Git concepts.
 
-This directory contains hands-on exercises for every module.
+---
 
-Every lab is designed to reinforce concepts learned in the documentation.
+## Lab 01
 
-The recommended workflow is:
+Repository Setup
 
-Read → Practice → Break → Debug → Document
+---
+
+## Lab 02
+
+Git Internals
+
+---
+
+## Lab 03
+
+Staging Area
+
+---
+
+## Lab 04
+
+Commit Lifecycle
+
+---
+
+## Upcoming
+
+- Branching
+- Merge
+- Rebase
+- GitHub
