@@ -157,3 +157,4 @@ If it helps other engineers understand these technologies, then it has achieved 
 ========================================================================================================================
 Learning with wonderful mentor
 Learning Git Internals - Day 2
+Branch pointer demo
