@@ -55,3 +55,45 @@ git ls-tree
 git rev-parse HEAD
 
 find .git/objects -type f | wc -l
+
+---
+
+git branch
+
+List branches
+
+--------------------
+
+git branch <branch>
+
+Create branch
+
+--------------------
+
+git switch <branch>
+
+Switch branch
+
+--------------------
+
+git switch -c <branch>
+
+Create and switch
+
+--------------------
+
+git show-ref
+
+Display references
+
+--------------------
+
+cat .git/refs/heads/main
+
+Display latest commit SHA
+
+--------------------
+
+git branch --show-current
+
+Display current branch
