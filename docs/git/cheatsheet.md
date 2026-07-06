@@ -97,3 +97,93 @@ Display latest commit SHA
 git branch --show-current
 
 Display current branch
+
+==================
+
+## Git Merge
+
+Merge a branch into the currently checked-out branch:
+
+```bash
+git merge <branch>
+```
+
+### Fast-Forward Merge
+
+```text
+Current branch is an ancestor
+        ↓
+Branch pointer moves forward
+        ↓
+No merge commit
+```
+
+### Three-Way Merge
+
+```text
+Branches have diverged
+        ↓
+Git finds merge base
+        ↓
+Combines Base + Ours + Theirs
+        ↓
+Creates merge commit
+```
+
+### Merge Conflict Workflow
+
+```bash
+git merge <branch>
+
+git status
+
+# Edit and resolve conflicted files
+
+git add <resolved-file>
+
+git commit
+```
+
+Abort an unfinished merge:
+
+```bash
+git merge --abort
+```
+
+Inspect branch history:
+
+```bash
+git log --oneline --graph --decorate --all
+```
+
+Inspect a merge commit:
+
+```bash
+git cat-file -p HEAD
+```
+
+Display branch references:
+
+```bash
+git show-ref --heads
+```
+
+### Conflict Markers
+
+```text
+<<<<<<< HEAD
+Current branch / Ours
+=======
+Incoming branch / Theirs
+>>>>>>> feature-branch
+```
+
+### Quick Mental Model
+
+```text
+Fast-Forward = Move Pointer
+
+Three-Way = Merge Base + Ours + Theirs → Merge Commit
+
+Conflict = Human Decision → git add → git commit
+```
