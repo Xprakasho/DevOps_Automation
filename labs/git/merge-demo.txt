@@ -1,1 +1,2 @@
 Fast-forward merge demo - commit D
+Fast-forward merge demo - commit E
