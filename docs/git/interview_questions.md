@@ -138,4 +138,101 @@ A merge commit will show multiple parent entries.
 
 Save it.
 
-After that, tell me it is done. Then we will make a **very concise cheatsheet update**, 
+After that, tell me it is done. Then we will make a **very concise cheatsheet update**,
+
+------------------------------------------
+
+## Git Rebase Interview Questions
+
+### 1. What is Git rebase?
+
+Git rebase replays commits from the current branch onto a new base.
+
+---
+
+### 2. Why do commit SHAs change after rebase?
+
+Rebase changes commit parent relationships. Because the parent SHA is part of the commit object, Git creates new commit objects with new SHAs.
+
+---
+
+### 3. What is the difference between merge and rebase?
+
+Merge preserves branch history and may create a merge commit.
+
+Rebase rewrites history by replaying commits onto a new base, creating new SHAs and a linear history.
+
+---
+
+### 4. Does rebase modify the main branch?
+
+No. When a feature branch is rebased onto `main`, the feature branch is rewritten. The `main` branch pointer does not move.
+
+---
+
+### 5. Why can a merge after rebase become a fast-forward merge?
+
+After rebase, `main` is an ancestor of the rebased feature branch. Therefore, Git can move the `main` pointer forward without creating a merge commit.
+
+---
+
+### 6. How do you resolve a rebase conflict?
+
+Resolve the conflicted file, stage it, and continue the rebase:
+
+```bash
+git add <resolved-file>
+git rebase --continue
+```
+
+---
+
+### 7. How do you cancel an ongoing rebase?
+
+```bash
+git rebase --abort
+```
+
+This restores the branch to its pre-rebase state.
+
+---
+
+### 8. What is the difference between resolving a merge conflict and a rebase conflict?
+
+For a merge conflict:
+
+```bash
+git add <resolved-file>
+git commit
+```
+
+For a rebase conflict:
+
+```bash
+git add <resolved-file>
+git rebase --continue
+```
+
+---
+
+### 9. Can old commits still exist after rebase?
+
+Yes. Old commits may remain in the Git object database temporarily even when branches no longer reference them. Previous reference positions can often be found using `git reflog`.
+
+---
+
+### 10. Why should you avoid rebasing shared history?
+
+Rebase creates new commit SHAs. If other developers are already using the original commits, rewriting that history can cause divergence and synchronization problems.
+
+---
+
+### 11. What does `git rebase --skip` do?
+
+It skips the current commit being replayed and continues with the remaining commits.
+
+---
+
+### 12. What is the main benefit of rebase?
+
+Rebase can produce a clean, linear commit history by replaying feature commits on top of the latest base branch.

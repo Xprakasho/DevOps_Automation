@@ -187,3 +187,72 @@ Three-Way = Merge Base + Ours + Theirs → Merge Commit
 
 Conflict = Human Decision → git add → git commit
 ```
+
+--------------------
+
+## Git Rebase
+
+Rebase the current branch onto another branch:
+
+```bash
+git rebase <branch>
+```
+
+Typical feature workflow:
+
+```bash
+git switch feature
+git rebase main
+```
+
+Continue after resolving a conflict:
+
+```bash
+git add <resolved-file>
+git rebase --continue
+```
+
+Abort an ongoing rebase:
+
+```bash
+git rebase --abort
+```
+
+Skip the current commit:
+
+```bash
+git rebase --skip
+```
+
+Inspect previous reference positions:
+
+```bash
+git reflog --oneline
+```
+
+### Quick Mental Model
+
+```text
+Rebase
+   ↓
+Replay Commits on New Base
+   ↓
+New Parent Relationships
+   ↓
+New Commit SHAs
+   ↓
+Linear History
+```
+
+### Merge vs Rebase
+
+```text
+Merge  = Preserve History + Possible Merge Commit
+
+Rebase = Rewrite History + New SHAs + Linear History
+```
+
+### Golden Rule
+
+```text
+Avoid rebasing shared/public history.

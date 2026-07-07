@@ -501,3 +501,373 @@ git commit
         |
         v
 Merge completed
+
+-------------------------
+
+# Git Rebase
+
+## Objective
+
+Understand how Git replays commits onto a new base, why rebased commits receive new SHAs, how rebase differs from merge, and how rebase conflicts are resolved.
+
+---
+
+## What is Git Rebase?
+
+Git rebase moves a series of commits to a new base by replaying their changes one by one.
+
+Example:
+
+```bash
+git switch feature
+git rebase main
+```
+
+Git takes the commits unique to `feature` and replays them on top of `main`.
+
+---
+
+## Rebase Workflow
+
+### Before Rebase
+
+```text
+          D --- E  feature
+         /
+A --- B --- C --- F --- G  main
+```
+
+Run:
+
+```bash
+git switch feature
+git rebase main
+```
+
+### After Rebase
+
+```text
+A --- B --- C --- F --- G --- D' --- E'
+                      ↑                 ↑
+                     main             feature
+```
+
+The original commits `D` and `E` are replaced in the feature branch history by new commits `D'` and `E'`.
+
+---
+
+## Why Do Commit SHAs Change?
+
+A Git commit contains information such as:
+
+```text
+Commit
+├── Tree
+├── Parent
+├── Author
+├── Committer
+└── Commit Message
+```
+
+Before rebase:
+
+```text
+D  → parent C
+E  → parent D
+```
+
+After rebase:
+
+```text
+D' → parent G
+E' → parent D'
+```
+
+Because the parent relationship changes, the commit object changes.
+
+Therefore:
+
+```text
+Parent Changes
+      ↓
+Commit Object Changes
+      ↓
+SHA Changes
+```
+
+This is why rebase is called history rewriting.
+
+---
+
+## Merge vs Rebase
+
+### Merge
+
+```text
+Preserves branch history
+        ↓
+Original commits remain unchanged
+        ↓
+May create a merge commit
+```
+
+Example:
+
+```text
+          D --- E
+         /       \
+A --- B --- C     M
+             \   /
+              F-G
+```
+
+### Rebase
+
+```text
+Replays commits on a new base
+        ↓
+Creates new commit objects
+        ↓
+Creates new SHAs
+        ↓
+Produces linear history
+```
+
+Example:
+
+```text
+A --- B --- C --- F --- G --- D' --- E'
+```
+
+---
+
+## Rebase Followed by Fast-Forward Merge
+
+After rebasing a feature branch onto `main`:
+
+```text
+A --- B --- C --- F --- G --- D' --- E'
+                      ↑                 ↑
+                     main             feature
+```
+
+Run:
+
+```bash
+git switch main
+git merge feature
+```
+
+Result:
+
+```text
+A --- B --- C --- F --- G --- D' --- E'
+                                        ↑
+                               main and feature
+```
+
+Git performs a fast-forward merge because `main` is an ancestor of the feature branch.
+
+No merge commit is created.
+
+---
+
+## Rebase Conflict
+
+A rebase conflict occurs when Git cannot automatically replay a commit onto the new base.
+
+Start rebase:
+
+```bash
+git rebase main
+```
+
+Inspect the conflict:
+
+```bash
+git status
+```
+
+Resolve the conflicted file manually.
+
+Then:
+
+```bash
+git add <resolved-file>
+git rebase --continue
+```
+
+To cancel the rebase:
+
+```bash
+git rebase --abort
+```
+
+To skip the current commit:
+
+```bash
+git rebase --skip
+```
+
+---
+
+## Merge Conflict vs Rebase Conflict
+
+```text
+Merge Conflict
+
+Resolve File
+     ↓
+git add
+     ↓
+git commit
+```
+
+```text
+Rebase Conflict
+
+Resolve File
+     ↓
+git add
+     ↓
+git rebase --continue
+```
+
+---
+
+## Empty Commit During Rebase
+
+Sometimes a rebased commit becomes empty because its changes are already present in the new base or because the conflict resolution keeps the new base's content.
+
+Example:
+
+```text
+Feature Change: Staging
+
+Main Change: Production
+
+Resolution: Production
+```
+
+The resolved content is already identical to `main`.
+
+Therefore, the feature commit may have no remaining change to apply.
+
+---
+
+## Reflog and Old Commits
+
+After rebase, the original commits may no longer be reachable through the branch.
+
+However, Git does not necessarily delete the commit objects immediately.
+
+Previous reference positions can be inspected using:
+
+```bash
+git reflog
+```
+
+An old commit can be inspected directly if its SHA is known:
+
+```bash
+git cat-file -p <old-commit-sha>
+```
+
+Important:
+
+```text
+Unreachable Commit
+        ≠
+Immediately Deleted Object
+```
+
+---
+
+## Golden Rule of Rebase
+
+Avoid rebasing shared history that other developers are already using.
+
+Why?
+
+```text
+Rebase
+   ↓
+New Commit Objects
+   ↓
+New SHAs
+   ↓
+History Rewritten
+```
+
+Rebasing private or local feature branch commits is generally safer because other developers are not depending on the original commit history.
+
+---
+
+## Useful Commands
+
+```bash
+# Rebase current branch onto main
+git rebase main
+
+# Continue after resolving conflict
+git rebase --continue
+
+# Abort rebase
+git rebase --abort
+
+# Skip current commit
+git rebase --skip
+
+# Inspect history
+git log --oneline --graph --decorate --all
+
+# Inspect reflog
+git reflog --oneline
+
+# Inspect a commit object
+git cat-file -p <commit-sha>
+```
+
+---
+
+## Quick Mental Model
+
+```text
+MERGE
+
+Preserve History
+      +
+Combine Branches
+      +
+Possible Merge Commit
+```
+
+```text
+REBASE
+
+Find Unique Commits
+      ↓
+Move to New Base
+      ↓
+Replay Changes
+      ↓
+Create New Commits
+      ↓
+New SHAs
+      ↓
+Linear History
+```
+
+---
+
+## Key Takeaways
+
+- Rebase replays commits onto a new base.
+- Rebased commits receive new SHAs because their parent relationships change.
+- Rebase rewrites commit history.
+- Rebase can produce a cleaner linear history.
+- A rebased feature branch can often be integrated using fast-forward merge.
+- Rebase conflicts are resolved using `git add` and `git rebase --continue`.
+- `git rebase --abort` restores the original pre-rebase state.
+- Reflog can help locate previous commit positions.
+- Avoid casually rebasing shared history.
