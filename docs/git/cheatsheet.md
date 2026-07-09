@@ -256,3 +256,107 @@ Rebase = Rewrite History + New SHAs + Linear History
 
 ```text
 Avoid rebasing shared/public history.
+
+--------------------------------
+
+---
+
+## Git Remotes and Pull Requests
+
+### View Remote Configuration
+
+```bash
+git remote -v
+git remote show origin
+View Branch Tracking
+git branch -vv
+View Remote-Tracking Branches
+git branch -r
+View All Branches
+git branch -a
+Fetch Remote Changes
+git fetch origin
+Fetch and Remove Stale Remote References
+git fetch --prune
+Inspect After Fetch
+git status
+git log --oneline --graph --decorate --all
+Update Local Main Safely
+git merge --ff-only origin/main
+Fetch and Integrate Changes
+git pull
+Push Current Tracking Branch
+git push
+Push New Branch and Configure Upstream
+git push -u origin <branch-name>
+Delete Local Merged Branch
+git branch -d <branch-name>
+Delete Remote Branch
+git push origin --delete <branch-name>
+Inspect a Merge Commit
+git cat-file -p <commit-sha>
+Important Concepts
+main
+    Local branch
+
+origin/main
+    Remote-tracking branch
+
+git fetch
+    Download objects + update remote-tracking refs
+
+git pull
+    Fetch + integration
+
+git push -u
+    Push + configure upstream
+
+PR base
+    Destination branch
+
+PR compare
+    Source branch
+
+Merge commit
+    Commit with multiple parents
+
+git fetch --prune
+    Remove stale remote-tracking references
+Safe Remote Update Workflow
+git fetch origin
+        ↓
+git status
+        ↓
+git log --oneline --graph --decorate --all
+        ↓
+git merge --ff-only origin/main
+Complete Pull Request Workflow
+git switch -c feature/demo
+        ↓
+Make changes
+        ↓
+git add
+        ↓
+git commit
+        ↓
+git push -u origin feature/demo
+        ↓
+Create PR
+        ↓
+Verify base and compare
+        ↓
+Merge PR
+        ↓
+git switch main
+        ↓
+git fetch origin
+        ↓
+Inspect graph
+        ↓
+git merge --ff-only origin/main
+        ↓
+git branch -d feature/demo
+        ↓
+git push origin --delete feature/demo
+        ↓
+git fetch --prune
