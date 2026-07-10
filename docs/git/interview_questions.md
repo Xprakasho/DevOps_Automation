@@ -487,3 +487,198 @@ Delete local feature branch
 Delete remote feature branch
         ↓
 Prune stale remote-tracking references
+
+--------------------------------------------
+
+# Git Recovery Interview Questions
+
+## 1. What are the three important areas to understand for Git recovery?
+
+HEAD, the Index or Staging Area, and the Working Tree.
+
+---
+
+## 2. What does `git restore <file>` do?
+
+By default, it restores the Working Tree file from the Index. It does not move HEAD or the current branch.
+
+---
+
+## 3. What does `git restore --staged <file>` do?
+
+It restores the Index entry from HEAD, effectively unstaging the file while normally preserving the Working Tree changes.
+
+---
+
+## 4. What is the difference between `git reset --soft`, `--mixed`, and `--hard`?
+
+`--soft` moves HEAD and the branch pointer while preserving the Index and Working Tree.
+
+`--mixed` moves HEAD and resets the Index while preserving the Working Tree.
+
+`--hard` moves HEAD and resets both the Index and Working Tree.
+
+---
+
+## 5. What is the default mode of git reset?
+
+`--mixed`.
+
+Therefore:
+
+```bash
+git reset HEAD~1
+
+is equivalent to:
+
+git reset --mixed HEAD~1
+6. You accidentally committed a change but want to keep it staged. Which command can you use?
+git reset --soft HEAD~1
+7. You want to undo the latest commit but keep its changes unstaged. Which command can you use?
+git reset --mixed HEAD~1
+8. Why is git reset --hard dangerous?
+
+Because it resets the branch, Index, and Working Tree to the target commit and may discard tracked local changes.
+
+9. What is git reflog?
+
+Git reflog records recent movements of local references such as HEAD and branch pointers.
+
+It is useful for recovering commits that are no longer visible in normal branch history.
+
+10. Why can a commit disappear from git log but remain visible in git reflog?
+
+git log normally displays commits reachable from the selected references, while reflog records recent reference movement history.
+
+After a reset, a commit may no longer be reachable from the current branch but may still be referenced by the reflog.
+
+11. How would you recover a commit after an accidental hard reset?
+
+First inspect:
+
+git reflog
+
+Find the required commit SHA.
+
+Then recover it:
+
+git reset --hard <commit-SHA>
+12. What is the difference between git reset and git revert?
+
+git reset moves a branch pointer and may rewrite history.
+
+git revert creates a new commit that reverses an earlier commit while preserving the existing history.
+
+13. Which is generally safer for a shared branch: reset or revert?
+
+Revert, because it preserves existing history and records the undo operation as a new commit.
+
+14. Does git revert delete the original commit?
+
+No.
+
+The original commit remains in history. Git creates a new commit containing the inverse changes.
+
+15. How many parents does a normal revert commit have?
+
+One parent.
+
+A normal revert commit is not automatically a merge commit.
+
+16. Can git revert cause conflicts?
+
+Yes.
+
+A conflict can occur when later commits modified the same content that the revert operation attempts to reverse.
+
+17. How do you resolve a revert conflict?
+
+Inspect the repository:
+
+git status
+git diff
+
+Resolve the file manually.
+
+Stage it:
+
+git add <file>
+
+Inspect the staged resolution:
+
+git diff --cached
+
+Continue:
+
+git revert --continue
+18. How do you cancel a revert operation that is in progress?
+git revert --abort
+19. Why should you run git diff --cached after resolving a conflict?
+
+To verify exactly what content is staged and will become part of the resulting commit.
+
+This can expose accidental changes such as whitespace or additional blank lines.
+
+20. Scenario: A developer accidentally runs git reset --hard HEAD~1. How would you troubleshoot?
+
+I would first inspect:
+
+git reflog
+
+I would identify the previous HEAD commit and verify it.
+
+Then, if appropriate, recover the branch:
+
+git reset --hard <previous-commit-SHA>
+
+Finally, I would verify:
+
+git status
+git log --oneline --decorate
+21. Scenario: A bad commit has already been pushed to a shared production branch. Would you use reset or revert?
+
+I would normally use git revert.
+
+Revert creates a new commit that reverses the bad change while preserving shared history.
+
+22. Scenario: You staged a file accidentally but want to keep the modifications. What command would you use?
+git restore --staged <file>
+
+This removes the changes from the Index while preserving the Working Tree content.
+
+23. Scenario: You modified a tracked file and want to discard the unstaged changes. What command would you use?
+git restore <file>
+
+By default, Git restores the Working Tree version from the Index.
+
+24. What recovery commands should a DevOps engineer know?
+
+The primary commands include:
+
+git restore
+git reset
+git revert
+git reflog
+git status
+git diff
+git diff --cached
+git log
+git show
+
+The important skill is understanding how each command affects HEAD, the Index, and the Working Tree.
+
+25. What is your troubleshooting approach before running a destructive Git command?
+
+I first inspect the repository using:
+
+git status
+git log --oneline --graph --decorate --all
+git diff
+git diff --cached
+
+If branch history has moved unexpectedly, I also inspect:
+
+git reflog
+
+Before executing the recovery command, I determine its expected effect on HEAD, the Index, and the Working Tree.
+EOF.

@@ -360,3 +360,60 @@ git branch -d feature/demo
 git push origin --delete feature/demo
         ↓
 git fetch --prune
+
+-----------------------------------
+
+# Git Recovery
+
+## Restore Working Tree from Index
+
+```bash
+git restore <file>
+Index → Working Tree
+Unstage a File
+git restore --staged <file>
+HEAD → Index
+Restore Index and Working Tree from HEAD
+git restore --source=HEAD --staged --worktree <file>
+Reset Modes
+git reset --soft HEAD~1
+git reset --mixed HEAD~1
+git reset --hard HEAD~1
+soft  = Move HEAD
+mixed = Move HEAD + Reset Index
+hard  = Move HEAD + Reset Index + Working Tree
+Inspect Reflog
+git reflog
+git reflog --oneline -10
+Recover a Lost Commit
+git reflog
+git reset --hard <commit-SHA>
+Revert a Commit
+git revert <commit-SHA>
+Continue or Abort Revert
+git revert --continue
+git revert --abort
+git revert --skip
+Recovery Inspection Commands
+git status
+git diff
+git diff --cached
+git log --oneline --graph --decorate --all
+git reflog
+git show HEAD
+cat -A <file>
+Reset vs Revert
+reset  → Move branch pointer / rewrite local history
+revert → Create inverse commit / preserve history
+Conflict Resolution Workflow
+git status
+      ↓
+Inspect conflict
+      ↓
+Edit file
+      ↓
+git add <file>
+      ↓
+git diff --cached
+      ↓
+git revert --continue
