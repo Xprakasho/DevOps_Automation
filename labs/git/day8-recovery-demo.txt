@@ -1,2 +1,3 @@
 Environment: Production
 Application: Payment-Service
+Version: 3.0
