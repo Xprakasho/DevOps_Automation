@@ -1,1 +1,2 @@
 Application: Payment-Service
+Version: 1.0
