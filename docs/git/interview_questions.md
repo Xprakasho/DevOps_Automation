@@ -682,3 +682,179 @@ git reflog
 
 Before executing the recovery command, I determine its expected effect on HEAD, the Index, and the Working Tree.
 EOF.
+
+==========================================================================
+
+# Git Stash
+
+### 1. Difference between git stash apply and git stash pop?
+
+- apply restores changes and keeps the stash.
+- pop restores changes and removes the stash after a successful application.
+
+---
+
+### 2. Difference between git stash drop and git stash clear?
+
+- drop removes one stash.
+- clear removes every stash.
+
+---
+
+### 3. How do you stash only one file?
+
+```bash
+git stash push -- file.txt
+```
+
+---
+
+### 4. Difference between git stash and git stash -u?
+
+- git stash stores tracked changes.
+- git stash -u also stores untracked files.
+
+---
+
+### 5. What does git stash apply --index do?
+
+It restores both the Working Tree and the original staging state.
+
+---
+
+# Git Cherry-pick
+
+### 6. What is git cherry-pick?
+
+Copies changes from one or more commits and creates new commits on the current branch.
+
+---
+
+### 7. Why does a cherry-picked commit receive a new SHA?
+
+Because Git creates a new commit object on the target branch.
+
+---
+
+### 8. Cherry-pick vs Merge?
+
+Merge integrates an entire branch.
+
+Cherry-pick copies selected commits.
+
+---
+
+### 9. Cherry-pick vs Rebase?
+
+Rebase rewrites commit history.
+
+Cherry-pick copies individual commits.
+
+---
+
+### 10. Why can cherry-pick fail?
+
+Because the selected commit may depend on earlier commits that are missing on the target branch.
+
+---
+
+### 11. What does git cherry-pick -x do?
+
+Adds the original commit SHA to the new commit message.
+
+---
+
+### 12. What is git cherry-pick --abort?
+
+Cancels the cherry-pick operation and restores the previous repository state.
+
+---
+
+### 13. What is git cherry-pick --continue?
+
+Continues the cherry-pick after conflicts have been resolved.
+
+---
+
+### 14. What is git cherry-pick -m?
+
+Used when cherry-picking a merge commit to specify the mainline parent.
+
+---
+
+# Git Tags
+
+### 15. Difference between Branch and Tag?
+
+Branches move with new commits.
+
+Tags remain attached to a fixed commit.
+
+---
+
+### 16. Difference between Lightweight and Annotated Tags?
+
+Lightweight tags are simple references.
+
+Annotated tags include metadata such as tagger, date, and message.
+
+---
+
+### 17. How do you tag an older commit?
+
+```bash
+git tag v1.0 <commit-sha>
+```
+
+---
+
+### 18. How do you push one tag?
+
+```bash
+git push origin v1.0
+```
+
+---
+
+### 19. How do you push all tags?
+
+```bash
+git push origin --tags
+```
+
+---
+
+### 20. Why doesn't git push push tags automatically?
+
+Because Git treats tags as release metadata and requires explicit publication.
+
+---
+
+### 21. How do you delete a local tag?
+
+```bash
+git tag -d v1.0
+```
+
+---
+
+### 22. How do you delete a remote tag?
+
+```bash
+git push origin --delete v1.0
+```
+
+---
+
+### 23. Can a tag point to any commit?
+
+Yes. A tag can reference any commit by its SHA.
+
+---
+
+### 24. When are Git tags commonly used?
+
+- Production releases
+- Versioning
+- Rollback points
+- CI/CD release pipelines

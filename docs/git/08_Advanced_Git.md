@@ -687,3 +687,404 @@ The most important Git Stash principles are:
 8. `git stash apply --index` attempts to restore the original Index state.
 9. Multiple stashes are stored as a stack.
 10. A specific stash can be selected using `stash@{n}`.
+
+===================================
+
+---
+
+## 21. Stashing Selected Files
+
+Git allows stashing only specific files instead of all modified tracked files.
+
+Command:
+
+```bash
+git stash push -- <file>
+```
+
+Example:
+
+```bash
+git stash push -- labs/git/day9-app.txt
+```
+
+Result:
+
+```text
+day9-app.txt   -> stashed
+
+day9-db.txt    -> remains modified
+```
+
+This is useful when only part of the current work should be temporarily stored.
+
+Typical DevOps use case:
+
+```text
+values.yaml        -> stash
+
+README.md          -> continue editing
+
+deployment.yaml    -> continue editing
+```
+
+Important:
+
+```text
+Only the specified file is stashed.
+
+Other modified files remain unchanged.
+``` 
+=================================================
+
+---
+
+## 22. Removing Stashes
+
+Delete a single stash:
+
+```bash
+git stash drop stash@{0}
+```
+
+Result:
+
+```text
+Selected stash removed.
+
+Remaining stash entries are automatically renumbered.
+```
+
+Delete every stash:
+
+```bash
+git stash clear
+```
+
+Result:
+
+```text
+All stash entries removed.
+```
+
+Important:
+
+Neither command changes:
+
+- HEAD
+- Branch
+- Index
+- Working Tree
+
+Only the stash references are removed.
+
+====================================================
+
+---
+
+# 23. Git Cherry-pick
+
+## What Is Cherry-pick?
+
+Git Cherry-pick copies the changes introduced by one or more commits and creates new commits on the current branch.
+
+Command:
+
+```bash
+git cherry-pick <commit-sha>
+```
+
+Example:
+
+```text
+Feature Branch
+
+A
+B
+C
+```
+
+Cherry-pick B onto main:
+
+```text
+main
+
+X
+Y
+B'
+```
+
+Important:
+
+```text
+Original commit remains.
+
+A new commit is created.
+
+New SHA is generated.
+```
+
+Cherry-pick copies the patch, not the original commit.
+
+---
+
+## Multiple Commits
+
+```bash
+git cherry-pick sha1 sha2
+```
+
+---
+
+## Commit Ranges
+
+Include B:
+
+```bash
+git cherry-pick B^..D
+```
+
+Cherry-picks:
+
+```text
+B
+C
+D
+```
+
+Exclude B:
+
+```bash
+git cherry-pick B..D
+```
+
+Cherry-picks:
+
+```text
+C
+D
+```
+
+---
+
+## Cherry-pick Dependency
+
+Cherry-picking a commit may fail if the target branch lacks commits required by the selected commit.
+
+Example:
+
+```text
+Commit A
+Create file
+
+Commit B
+Modify file
+```
+
+Cherry-picking only B may fail because the file does not yet exist.
+
+---
+
+## Cherry-pick Options
+
+Abort:
+
+```bash
+git cherry-pick --abort
+```
+
+Continue:
+
+```bash
+git cherry-pick --continue
+```
+
+Trace original commit:
+
+```bash
+git cherry-pick -x <sha>
+```
+
+---
+
+## Cherry-pick vs Merge
+
+| Merge | Cherry-pick |
+|--------|-------------|
+| Brings all commits | Brings selected commits |
+| Preserves branch history | Creates new commits |
+| Used for integrating branches | Used for hotfixes and backports |
+
+---
+
+## Common Use Cases
+
+- Production hotfix
+- Backport bug fixes
+- Copy security patches
+- Release branch maintenance
+
+==============================================================================
+
+---
+
+# 24. Git Tags
+
+Git Tags create permanent names for specific commits.
+
+Unlike branches, tags normally do not move.
+
+Example:
+
+```text
+A
+B
+C
+D
+```
+
+```text
+v1.0
+  |
+  D
+```
+
+---
+
+## Lightweight Tags
+
+Create:
+
+```bash
+git tag v1.0
+```
+
+Characteristics:
+
+- Simple reference
+- No metadata
+
+---
+
+## Annotated Tags
+
+Create:
+
+```bash
+git tag -a v1.1 -m "First production release"
+```
+
+Annotated tags store:
+
+- Tagger
+- Date
+- Message
+- Referenced commit
+
+Recommended for production releases.
+
+---
+
+## Tag Older Commits
+
+```bash
+git tag v0.9 <commit-sha>
+```
+
+Tags can reference any commit.
+
+---
+
+## Inspect Tags
+
+List:
+
+```bash
+git tag
+```
+
+Display:
+
+```bash
+git show v1.1
+```
+
+---
+
+## Push Tags
+
+Push one:
+
+```bash
+git push origin v1.1
+```
+
+Push all:
+
+```bash
+git push origin --tags
+```
+
+Important:
+
+```text
+git push
+
+does NOT push tags automatically.
+```
+
+---
+
+## Delete Tags
+
+Delete local:
+
+```bash
+git tag -d v1.0
+```
+
+Delete remote:
+
+```bash
+git push origin --delete v1.0
+```
+
+---
+
+## Branch vs Tag
+
+| Branch | Tag |
+|---------|-----|
+| Moves | Fixed |
+| Development | Releases |
+| Changes over time | Permanent reference |
+
+---
+
+## Typical Release Workflow
+
+```text
+Commit
+
+↓
+
+Merge
+
+↓
+
+CI Pipeline
+
+↓
+
+Create Tag
+
+↓
+
+Push Tag
+
+↓
+
+Deploy Release
+```
+=====================================================================================
+

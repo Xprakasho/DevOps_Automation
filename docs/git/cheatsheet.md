@@ -417,3 +417,105 @@ git add <file>
 git diff --cached
       ↓
 git revert --continue
+
+===============================================
+
+# Advanced Git Cheat Sheet
+
+## Git Stash
+
+```bash
+git stash
+
+git stash push -m "message"
+
+git stash list
+
+git stash show -p stash@{0}
+
+git stash apply
+
+git stash apply --index
+
+git stash pop
+
+git stash push -u
+
+git stash push -- file.txt
+
+git stash drop stash@{0}
+
+git stash clear
+```
+
+---
+
+## Cherry-pick
+
+```bash
+git cherry-pick <sha>
+
+git cherry-pick sha1 sha2
+
+git cherry-pick B^..D
+
+git cherry-pick --continue
+
+git cherry-pick --abort
+
+git cherry-pick -x <sha>
+```
+
+---
+
+## Tags
+
+```bash
+git tag
+
+git tag v1.0
+
+git tag -a v1.1 -m "Release"
+
+git tag v0.9 <sha>
+
+git show v1.0
+
+git show v1.1
+
+git push origin v1.1
+
+git push origin --tags
+
+git tag -d v1.1
+
+git push origin --delete v1.1
+```
+
+---
+
+## Quick Comparison
+
+| Operation | Purpose |
+|-----------|---------|
+| stash | Temporarily save work |
+| cherry-pick | Copy selected commit |
+| tag | Mark release/version |
+
+---
+
+## Common Interview Commands
+
+```bash
+git stash apply --index
+
+git cherry-pick B^..D
+
+git tag -a v1.0 -m "Release"
+
+git push origin --tags
+
+git tag -d v1.0
+
+git push origin --delete v1.0
+```

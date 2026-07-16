@@ -1,4 +1,5 @@
 
+
 # Lab 10: Advanced Git
 
 ## Objective
@@ -693,3 +694,339 @@ Then continue Advanced Git:
 Git Cherry-Pick
 Git Tags
 ```
+
+=============================================
+
+---
+
+# Part 18: Stashing Selected Files
+
+## Objective
+
+Learn how to stash only a specific file while leaving other modified files untouched.
+
+### Create Demo Files
+
+```bash
+cat > labs/git/day9-app.txt <<EOF
+Application: Payment-Service
+EOF
+
+cat > labs/git/day9-db.txt <<EOF
+Database: PostgreSQL
+EOF
+```
+
+Commit:
+
+```bash
+git add .
+git commit -m "test: add stash selected files demo"
+```
+
+Modify both:
+
+```bash
+echo "Environment: Development" >> labs/git/day9-app.txt
+
+echo "Replica: Enabled" >> labs/git/day9-db.txt
+```
+
+Inspect:
+
+```bash
+git status --short
+```
+
+Expected:
+
+```text
+ M labs/git/day9-app.txt
+ M labs/git/day9-db.txt
+```
+
+Stash only one file:
+
+```bash
+git stash push -m "day9: selected file demo" -- labs/git/day9-app.txt
+```
+
+Verify:
+
+```bash
+git status --short
+git stash show -p stash@{0}
+```
+
+Observe:
+
+- day9-app.txt restored
+- day9-db.txt still modified
+- stash contains only day9-app.txt
+
+---
+
+# Part 19: git stash drop
+
+View stashes:
+
+```bash
+git stash list
+```
+
+Delete one stash:
+
+```bash
+git stash drop stash@{1}
+```
+
+Verify:
+
+```bash
+git stash list
+```
+
+Observe:
+
+- Selected stash removed
+- Remaining stashes renumbered
+
+---
+
+# Part 20: git stash clear
+
+Remove every stash:
+
+```bash
+git stash clear
+```
+
+Verify:
+
+```bash
+git stash list
+```
+
+Expected:
+
+```text
+(no stash entries)
+```
+
+---
+
+# Part 21: Cherry-pick Single Commit
+
+Switch:
+
+```bash
+git switch main
+git switch -c feature/cherry-pick-demo
+```
+
+Create:
+
+```bash
+echo "Application: Payment-Service" > labs/git/cherry-demo.txt
+```
+
+Commit:
+
+```bash
+git add .
+git commit -m "test: add cherry-pick demo file"
+```
+
+Second commit:
+
+```bash
+echo "Version: 1.0" >> labs/git/cherry-demo.txt
+
+git add .
+
+git commit -m "test: add application version"
+```
+
+Third commit:
+
+```bash
+echo "Environment: Production" >> labs/git/cherry-demo.txt
+
+git add .
+
+git commit -m "test: add production environment"
+```
+
+Inspect:
+
+```bash
+git log --oneline --decorate -3
+```
+
+---
+
+# Part 22: Cherry-pick Dependency Conflict
+
+Create target branch:
+
+```bash
+git switch main
+
+git switch -c feature/cherry-target
+```
+
+Attempt:
+
+```bash
+git cherry-pick <version-sha>
+```
+
+Observe:
+
+```text
+CONFLICT (modify/delete)
+```
+
+Reason:
+
+The target branch does not yet contain the file created by the earlier commit.
+
+Abort:
+
+```bash
+git cherry-pick --abort
+```
+
+---
+
+# Part 23: Successful Cherry-pick
+
+Cherry-pick file creation:
+
+```bash
+git cherry-pick <create-file-sha>
+```
+
+Then:
+
+```bash
+git cherry-pick <version-sha>
+```
+
+Verify:
+
+```bash
+git log --decorate --oneline
+
+cat labs/git/cherry-demo.txt
+```
+
+Observe:
+
+- New SHAs
+- Same commit messages
+- Source branch unchanged
+
+---
+
+# Part 24: Lightweight Tag
+
+Create:
+
+```bash
+git tag v1.0
+```
+
+Inspect:
+
+```bash
+git tag
+
+git show v1.0
+
+git log --decorate --oneline
+```
+
+---
+
+# Part 25: Annotated Tag
+
+Create:
+
+```bash
+git tag -a v1.1 -m "First production release"
+```
+
+Inspect:
+
+```bash
+git show v1.1
+```
+
+Observe:
+
+- Tagger
+- Date
+- Message
+- Referenced commit
+
+---
+
+# Part 26: Tag an Older Commit
+
+Create:
+
+```bash
+git tag v0.9 <commit-sha>
+```
+
+Inspect:
+
+```bash
+git log --decorate --oneline
+
+git show v0.9
+```
+
+---
+
+# Part 27: Push and Delete Tags
+
+Push one:
+
+```bash
+git push origin v1.1
+```
+
+Push all:
+
+```bash
+git push origin --tags
+```
+
+Delete local:
+
+```bash
+git tag -d v0.9
+```
+
+Delete remote:
+
+```bash
+git push origin --delete v0.9
+```
+
+---
+
+# Key Observations
+
+1. Selected file stashing affects only chosen files.
+2. git stash drop removes one stash.
+3. git stash clear removes all stashes.
+4. Cherry-pick copies changes and creates a new commit.
+5. Cherry-picked commits receive new SHAs.
+6. Cherry-pick may fail if required context is missing.
+7. Tags never move automatically.
+8. Lightweight tags are simple pointers.
+9. Annotated tags store metadata.
+10. Tags must be pushed explicitly.
