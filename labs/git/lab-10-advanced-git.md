@@ -1030,3 +1030,91 @@ git push origin --delete v0.9
 8. Lightweight tags are simple pointers.
 9. Annotated tags store metadata.
 10. Tags must be pushed explicitly.
+
+--------------------------------------------------
+
+Lab 10.4 – Detached HEAD
+Objective
+
+Understand Detached HEAD, create a commit in Detached HEAD, recover it, and learn when it is used in real-world DevOps.
+
+Lab Steps
+1. Checkout a tag in Detached HEAD
+git switch --detach v1.0
+
+Expected Output
+
+HEAD is now at <commit>
+HEAD detached at v1.0
+2. Verify Detached HEAD
+git status
+
+git branch --show-current
+
+git log --oneline --decorate -3
+
+Observation
+
+HEAD points directly to the commit.
+No branch is currently checked out.
+Existing branches remain unchanged.
+3. Create a commit in Detached HEAD
+echo "Detached HEAD Demo" > labs/git/detached-head-demo.txt
+
+git add .
+
+git commit -m "test: detached HEAD demo"
+
+Observation
+
+A new commit is created but no branch points to it.
+
+4. Switch back to the feature branch
+git switch feature/day9-advanced-git
+
+Expected Warning
+
+Warning: you are leaving 1 commit behind...
+
+Git warns because the commit is not referenced by any branch.
+
+5. Recover the Detached HEAD commit
+git branch feature/detached-head-demo <commit-sha>
+
+Verify
+
+git log --oneline --decorate --graph --all
+
+Observation
+
+The detached commit is now safely referenced by a branch.
+
+Lab 10.5 – Git Worktree
+Objective
+
+Learn how multiple working directories can share a single Git repository.
+
+Create a new worktree
+git worktree add ../DevOps_Main main
+Verify
+git worktree list
+
+Expected
+
+.../DevOps_Automation     [feature/day9-advanced-git]
+
+.../DevOps_Main           [main]
+Open the second worktree
+cd ../DevOps_Main
+
+git branch --show-current
+
+Expected
+
+main
+Remove the worktree
+git worktree remove ../DevOps_Main
+
+Verify
+
+git worktree list 

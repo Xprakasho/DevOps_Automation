@@ -858,3 +858,84 @@ Yes. A tag can reference any commit by its SHA.
 - Versioning
 - Rollback points
 - CI/CD release pipelines
+----------------------------------------------------
+
+Q1. What is Detached HEAD?
+Answer
+
+Detached HEAD is a Git state where HEAD points directly to a commit instead of pointing to a branch.
+
+Any commits created in this state are not attached to any branch unless a new branch is created.
+
+Q2. Difference between HEAD and Detached HEAD?
+HEAD	Detached HEAD
+HEAD points to a branch.	HEAD points directly to a commit.
+New commits update the current branch.	New commits are not attached to any branch.
+Normal development state.	Temporary inspection or testing state.
+Q3. How do you recover a Detached HEAD commit?
+Answer
+
+If you are still on the detached commit:
+
+git switch -c feature/new-branch
+
+If you have already switched away:
+
+git reflog
+
+git branch feature/new-branch <commit-sha>
+Q4. What is Git Worktree?
+Answer
+
+Git Worktree allows multiple working directories to share a single Git repository.
+
+Each worktree can check out a different branch while using the same Git object database.
+
+Q5. Why is Worktree better than cloning?
+Answer
+
+Git Worktree is faster because it shares the same repository and object database.
+
+Advantages:
+
+No duplicate repository
+Saves disk space
+Faster than cloning
+No need to stash when switching tasks
+Multiple branches can be worked on simultaneously
+Q6. Can two worktrees check out the same branch?
+Answer
+
+No.
+
+Git prevents the same branch from being checked out in two worktrees simultaneously.
+
+This avoids accidental conflicts and inconsistent branch state.
+
+Q7. Difference between Clone and Worktree?
+Git Clone	Git Worktree
+Creates a completely separate repository.	Creates another working directory using the same repository.
+Has its own .git directory.	Shares the original .git repository.
+Uses more disk space.	Uses very little additional disk space.
+Used for independent repositories.	Used for parallel work on multiple branches.
+
+-------------------------------------------------------------------------
+-------------------------------------------------------------------------
+
+# Top 15 Git Interview Questions
+
+1. Explain the Git architecture (Working Tree, Index, Repository).
+2. What is HEAD?
+3. Difference between merge and rebase.
+4. Difference between reset, restore, and revert.
+5. What is reflog?
+6. Explain Git stash.
+7. Difference between apply and pop.
+8. What is cherry-pick?
+9. Difference between lightweight and annotated tags.
+10. What is Detached HEAD?
+11. How do you recover a Detached HEAD commit?
+12. What is Git Worktree?
+13. Difference between clone and worktree.
+14. Why use feature branches?
+15. Explain your Git workflow in your current project.
