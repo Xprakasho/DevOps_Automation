@@ -519,3 +519,18 @@ git tag -d v1.0
 
 git push origin --delete v1.0
 ```
+----------------------------------------------------
+
+Detached HEAD
+
+git switch --detach <tag>
+
+git switch -c new-branch
+
+Git Worktree
+
+git worktree add
+
+git worktree list
+
+git worktree remove

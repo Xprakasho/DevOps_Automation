@@ -1088,3 +1088,52 @@ Deploy Release
 ```
 =====================================================================================
 
+# Detached HEAD
+
+## What is Detached HEAD?
+- HEAD points directly to a commit instead of a branch.
+- No branch moves while working in Detached HEAD.
+- Common when checking out tags or historical commits.
+
+## Why use it?
+- Inspect old releases
+- Debug historical commits
+- CI/CD systems
+- Production investigation
+
+## Risks
+- Commits are not attached to any branch.
+- They become unreachable if you leave Detached HEAD.
+
+## Recovery
+git switch -c feature/new-branch
+
+or
+
+git branch feature/new-branch <commit>
+
+Use git reflog if you already switched away.
+
+------------------------------
+
+# Git Worktree
+
+## Purpose
+Allows multiple working directories from one repository.
+
+## Benefits
+- No stash required
+- Parallel development
+- Faster than cloning
+- Shared Git object database
+
+## Commands
+
+git worktree add ../DevOps_Main main
+
+git worktree list
+
+git worktree remove ../DevOps_Main
+
+--------------------------------------------------
+
