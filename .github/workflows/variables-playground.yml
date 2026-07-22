@@ -2,6 +2,7 @@
 name: Variables Playground
 
 on:
+  push:
   workflow_dispatch:
 
 env:
