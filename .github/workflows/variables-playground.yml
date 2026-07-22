@@ -12,7 +12,8 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env:
+      APP_NAME: Job-App
     steps:
       - name: Print Workflow Variables
         run: |
