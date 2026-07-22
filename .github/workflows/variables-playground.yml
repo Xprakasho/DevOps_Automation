@@ -1,0 +1,19 @@
+
+name: Variables Playground
+
+on:
+  workflow_dispatch:
+
+env:
+  APP_NAME: DevOps_Automation
+  ENV: Development
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print Workflow Variables
+        run: |
+          echo "Application: $APP_NAME"
+          echo "Environment: $ENV"
