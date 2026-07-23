@@ -3,6 +3,7 @@ name: First CI Pipeline
 
 on:
   push:
+  workflow_dispatch:
 
 jobs:
   first-job:

@@ -16,6 +16,8 @@ jobs:
       APP_NAME: Job-App
     steps:
       - name: Print Workflow Variables
+        env:
+          APP_NAME: Step-Ap
         run: |
           echo "Application: $APP_NAME"
           echo "Environment: $ENV"
