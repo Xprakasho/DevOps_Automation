@@ -4,6 +4,10 @@ name: First CI Pipeline
 on:
   push:
   workflow_dispatch:
+env:
+  APP_NAME: DevOps_Automation
+  APP_ENV: Development
+  PYTHON_VERSION: "3.10"
 
 jobs:
   first-job:
