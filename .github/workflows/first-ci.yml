@@ -10,7 +10,7 @@ env:
   PYTHON_VERSION: "3.10"
 
 jobs:
-  first-job:
+  validate:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,9 +19,22 @@ jobs:
 
       - name: Display Repository Information
         run: |
+          echo "========================================"
+          echo "      DevOps Automation CI Pipeline"
+          echo "========================================"
+          echo ""
           echo "Repository: ${{ github.repository }}"
           echo "Branch: ${{ github.ref_name }}"
+          echo "Commit SHA : ${{ github.sha }}"
           echo "Triggered by: ${{ github.actor }}"
+          echo "Workflow   : ${{ github.workflow }}"
+          echo "Run Number : ${{ github.run_number }}"
+          echo "Runner OS  : $RUNNER_OS"
+          echo ""
+          echo "Application: $APP_NAME"
+          echo "Environment: $APP_ENV"
+          echo "Python     : ${{ env.PYTHON_VERSION }}"
+          echo "========================================"
 
       - name: Make Bash Script Executable
         run: chmod +x scripts/bash/hello.sh
@@ -32,7 +45,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Run Python Script
         run: python scripts/python/info.py
