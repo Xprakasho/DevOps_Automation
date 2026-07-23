@@ -10,7 +10,7 @@ env:
   PYTHON_VERSION: "3.10"
 
 jobs:
-  validate:
+  first-job:
     runs-on: ubuntu-latest
 
     steps:

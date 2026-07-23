@@ -350,3 +350,50 @@ Result
 ```
 
 This demonstrates both conceptual understanding and practical knowledge.
+------------------------
+
+Q1. What is a Workflow?
+
+A workflow is an automated process defined in a YAML file. It contains one or more jobs that execute when specific events occur.
+
+Q2. What is a Job?
+
+A job is a collection of related steps executed on the same runner.
+
+Q3. What is a Step?
+
+A step is an individual task within a job.
+
+Q4. Difference between ${{ }} and $VAR?
+
+${{ }} is evaluated by GitHub before the runner starts.
+
+$VAR is expanded by the shell while the script executes.
+
+Q5. Why use Workflow Variables?
+
+To define shared configuration once and reuse it throughout the workflow, improving maintainability and consistency.
+
+Q6. Why print Repository Metadata?
+
+To quickly identify which repository, branch, commit, workflow, and runner produced the build, making troubleshooting easier.
+
+Q7. Why rename first-job to validate?
+
+Because job names should describe their responsibility rather than their order.
+
+Q8. What creates "Set up job"?
+
+GitHub Actions Runner automatically creates it before executing user-defined steps.
+
+Q9. Explain Variable Precedence.
+
+Step variables override Job variables.
+
+Job variables override Workflow variables.
+
+Workflow variables are the default for all jobs and steps.
+
+Q10. What is GitHub Context?
+
+GitHub Context is metadata about the workflow execution (repository, actor, branch, commit, event, workflow, etc.) exposed through ${{ }} expressions.

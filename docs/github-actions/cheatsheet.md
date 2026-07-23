@@ -398,3 +398,79 @@ on:
 **Workflow → Job → Runner → Step**
 
 Everything in GitHub Actions follows this execution hierarchy.
+------------------------
+
+Workflow Variables
+env:
+  APP_NAME: DevOps_Automation
+Job Variables
+jobs:
+  validate:
+    env:
+      APP_NAME: Job-App
+Step Variables
+steps:
+- name: Example
+  env:
+    APP_NAME: Step-App
+GitHub Context
+${{ github.repository }}
+
+${{ github.actor }}
+
+${{ github.ref_name }}
+
+${{ github.sha }}
+
+${{ github.workflow }}
+
+${{ github.run_number }}
+Setup Python
+- uses: actions/setup-python@v5
+  with:
+    python-version: ${{ env.PYTHON_VERSION }}
+Triggers
+on:
+  push:
+
+  workflow_dispatch:
+Workflow Hierarchy
+Workflow
+    │
+    ▼
+Job
+    │
+    ▼
+Steps
+Variable Scope
+Step
+
+↓
+
+Job
+
+↓
+
+Workflow
+Evaluation Order
+GitHub
+
+↓
+
+Runner
+
+↓
+
+Shell
+Module 02 Summary
+
+By the end of this module, you have learned to:
+
+Design a clean GitHub Actions workflow.
+Use Workflow, Job, and Step variables correctly.
+Understand variable precedence.
+Differentiate GitHub expressions from shell variables.
+Use GitHub Context effectively.
+Read and troubleshoot GitHub Actions logs.
+Build and refactor a production-style CI pipeline.
+Apply engineering principles such as avoiding duplication, improving readability, and using meaningful names.
