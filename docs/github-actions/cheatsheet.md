@@ -474,3 +474,25 @@ Use GitHub Context effectively.
 Read and troubleshoot GitHub Actions logs.
 Build and refactor a production-style CI pipeline.
 Apply engineering principles such as avoiding duplication, improving readability, and using meaningful names.
+---------------------------------------------
+Branch Condition
+if: ${{ github.ref_name == 'main' }}
+Success
+if: ${{ success() }}
+Failure
+if: ${{ failure() }}
+Always
+if: ${{ always() }}
+Cancelled
+if: ${{ cancelled() }}
+AND
+if: ${{ github.ref_name == 'main' && success() }}
+OR
+if: ${{ failure() || cancelled() }}
+Step Status
+✅ Success
+
+❌ Failed
+
+⏭️ Skipped
+🧪 Labs Completed

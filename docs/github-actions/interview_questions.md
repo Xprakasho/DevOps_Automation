@@ -397,3 +397,48 @@ Workflow variables are the default for all jobs and steps.
 Q10. What is GitHub Context?
 
 GitHub Context is metadata about the workflow execution (repository, actor, branch, commit, event, workflow, etc.) exposed through ${{ }} expressions.
+
+-------------------------------------
+
+Q1. What is an Expression?
+
+An expression is logic evaluated by GitHub before executing a step or job.
+
+Q2. What does if: do?
+
+It controls whether a step or job executes based on an expression.
+
+Q3. Difference between success() and failure()?
+
+success() evaluates to TRUE only if all previous steps succeeded.
+
+failure() evaluates to TRUE if any previous step failed.
+
+Q4. What does always() do?
+
+It always evaluates to TRUE regardless of previous step status.
+
+Q5. What is cancelled()?
+
+It evaluates to TRUE if the workflow was cancelled.
+
+Q6. Difference between Failed and Skipped?
+
+Failed:
+
+The step started executing and encountered an error.
+
+Skipped:
+
+The step never started because its condition evaluated to FALSE.
+
+Q7. Can multiple conditions be combined?
+
+Yes.
+
+Example
+
+if: ${{ github.ref_name == 'main' && success() }}
+Q8. When would you use failure() in production?
+
+To collect logs, save diagnostics, upload crash reports, or notify engineers after a failed build or deployment.
