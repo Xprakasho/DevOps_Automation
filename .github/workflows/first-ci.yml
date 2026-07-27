@@ -48,4 +48,8 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Run Python Script
+        if: ${{ github.ref_name == 'main' }}
         run: python scripts/python/info.py
+
+      - name: Pipeline Completed
+        run: echo "✅ Pipeline finished successfully."
