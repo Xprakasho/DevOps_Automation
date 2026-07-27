@@ -10,7 +10,7 @@ env:
   PYTHON_VERSION: "3.10"
 
 jobs:
-  first-job:
+  validate:
     runs-on: ubuntu-latest
 
     steps:
@@ -41,7 +41,9 @@ jobs:
 
       - name: Run Bash Script
         run: ./scripts/bash/hello.sh
-
+      - name: Success Function Demo
+        if: ${{ success() }}
+        run: echo "✅ success() evaluated to TRUE. All previous steps succeeded."
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
