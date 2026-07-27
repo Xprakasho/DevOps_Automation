@@ -40,10 +40,12 @@ jobs:
         run: chmod +x scripts/bash/hello.sh
 
       - name: Run Bash Script
-        run: ./scripts/bash/hello.sh
-      - name: Success Function Demo
-        if: ${{ success() }}
-        run: echo "✅ success() evaluated to TRUE. All previous steps succeeded."
+        run: |
+             echo "Starting Bash..."
+             exit 1
+      - name: Failure Function Demo
+        if: ${{ failure() }}
+        run: echo "❌ "Failure ditected"
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -54,4 +56,5 @@ jobs:
         run: python scripts/python/info.py
 
       - name: Pipeline Completed
-        run: echo "✅ Pipeline finished successfully."
+        if: ${{ always() }}
+        run: echo "✅ Pipeline completed (always)."
