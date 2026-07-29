@@ -46,6 +46,7 @@ jobs:
         if: ${{ success() }}
         run: echo "All previous steps succeeded."
   python-validation:
+      needs: bash-validate
       runs-on: ubuntu-latest
       steps:
       - name: Checkout Repository
