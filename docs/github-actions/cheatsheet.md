@@ -496,3 +496,62 @@ Step Status
 
 ⏭️ Skipped
 🧪 Labs Completed
+-------------------------------
+
+Module 04 Summary
+
+You should now understand:
+
+Workflow Architecture
+Multiple Jobs
+Runner Isolation
+Independent Checkout
+Parallel Execution
+Job Dependencies
+needs:
+Failure Propagation
+CI/CD Pipeline Design
+Platform-independent CI/CD concepts
+
+Workflow
+    │
+    ▼
+Jobs
+    │
+    ▼
+Steps
+
+One Job
+↓
+
+One Runner
+
+No needs
+
+↓
+
+Parallel
+
+needs
+
+↓
+
+Sequential
+
+Each Job
+
+↓
+
+Checkout Repository
+
+Dependency Failed
+
+↓
+
+Dependent Job Skipped
+
+Jobs
+
+↓
+
+Do NOT Share Files

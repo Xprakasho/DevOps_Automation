@@ -442,3 +442,34 @@ if: ${{ github.ref_name == 'main' && success() }}
 Q8. When would you use failure() in production?
 
 To collect logs, save diagnostics, upload crash reports, or notify engineers after a failed build or deployment.
+
+16. Interview Questions
+Q1. Why use multiple jobs?
+
+Answer:
+
+Independent tasks can execute in parallel, reducing overall pipeline execution time and improving maintainability.
+
+Q2. Why is checkout required in every job?
+
+Answer:
+
+Each job runs on a new isolated runner with its own filesystem. Repository files are unavailable until checked out.
+
+Q3. What does needs: do?
+
+Answer:
+
+It defines job dependencies and execution order. A dependent job starts only after the required job completes successfully.
+
+Q4. What happens if a dependency fails?
+
+Answer:
+
+Dependent jobs are skipped and are not scheduled for execution.
+
+Q5. Can two jobs share files?
+
+Answer:
+
+Not directly. Jobs are isolated. Files must be shared explicitly using artifacts (covered in Module 05).
