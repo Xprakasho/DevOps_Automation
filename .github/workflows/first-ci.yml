@@ -3,6 +3,8 @@ name: First CI Pipeline
 
 on:
   push:
+    branches:
+      - main # Trigger workflow on push to main branch
   workflow_dispatch:
 env:
   APP_NAME: DevOps_Automation
@@ -10,7 +12,7 @@ env:
   PYTHON_VERSION: "3.10"
 
 jobs:
-  bash-validate:
+  create-report:
     runs-on: ubuntu-latest
 
     steps:
@@ -41,12 +43,22 @@ jobs:
 
       - name: Run Bash Script
         run: ./scripts/bash/hello.sh
+
+      - name: Create Report
+        run: |
+          echo "GitHub Actions Artifact Demo" > report.txt
+          cat report.txt
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v4
+        with:
+            name: demo-report
+            path: report.txt
              
       - name: Success Function Demo
         if: ${{ success() }}
         run: echo "All previous steps succeeded."
   python-validation:
-      needs: bash-validate
       runs-on: ubuntu-latest
       steps:
       - name: Checkout Repository
@@ -61,6 +73,14 @@ jobs:
         if: ${{ github.ref_name == 'main' }}
         run: python scripts/python/info.py
 
-      - name: Pipeline Completed
-        if: ${{ always() }}
-        run: echo "✅ Pipeline completed."
+  read-report:
+    needs: create-report
+    runs-on: ubuntu-latest
+    steps:
+     - name: Download Report
+       uses: actions/download-artifact@v4
+       with:
+        name: demo-report
+     - name: Pipeline Completed
+       if: ${{ always() }}
+       run: echo "✅ Pipeline completed."
