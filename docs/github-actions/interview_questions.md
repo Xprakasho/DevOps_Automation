@@ -473,3 +473,34 @@ Q5. Can two jobs share files?
 Answer:
 
 Not directly. Jobs are isolated. Files must be shared explicitly using artifacts (covered in Module 05).
+
+⭐ Interview Questions
+Q1. Why do artifacts exist?
+
+Answer:
+Artifacts allow isolated jobs running on different runners to share required build outputs.
+
+Q2. Why does cache exist?
+
+Answer:
+To avoid repeating expensive operations such as downloading dependencies, thereby reducing pipeline execution time.
+
+Q3. What is the biggest difference between Artifact and Cache?
+
+Answer:
+Artifacts are required for downstream stages and affect pipeline correctness. Cache is used only to improve performance; if it is missing, the pipeline still succeeds.
+
+Q4. Why shouldn't we upload everything as an artifact?
+
+Answer:
+It increases storage usage, upload/download time, and operational complexity. Only the files required by downstream jobs should be transferred.
+
+Q5. Why use artifact retention?
+
+Answer:
+To balance storage cost, debugging needs, compliance requirements, and operational management.
+
+Q6. How do you troubleshoot "Artifact not found"?
+
+Answer:
+Verify file creation, upload success, exact artifact name, job dependency (needs), and retention period.

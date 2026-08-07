@@ -11,6 +11,8 @@ env:
   APP_ENV: Development
   PYTHON_VERSION: "3.10"
 
+  USER_NAME: ${{ secrets.USER_NAME }}
+
 jobs:
   create-report:
     runs-on: ubuntu-latest
@@ -37,6 +39,11 @@ jobs:
           echo "Environment: $APP_ENV"
           echo "Python     : ${{ env.PYTHON_VERSION }}"
           echo "========================================"
+
+          - name: Verify Secret Injection
+          run: |
+          echo "Testing secret injection..."
+          echo "User Name: $USER_NAME"
 
       - name: Make Bash Script Executable
         run: chmod +x scripts/bash/hello.sh

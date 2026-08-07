@@ -555,3 +555,65 @@ Jobs
 ↓
 
 Do NOT Share Files
+
+------------------------------------------
+
+📗 Module 05 – Interview Q&A & Cheat Sheet
+⭐ One-Line Definitions
+
+Artifact
+
+Build output required by downstream jobs.
+
+Cache
+
+Reusable data stored to improve pipeline performance.
+
+⭐ Golden Rules
+
+✅ Artifacts are required for correctness.
+
+✅ Cache is an optimization, not a dependency.
+
+✅ Build once, use many.
+
+✅ CI/CD systems prefer deterministic behavior over intelligent guessing.
+
+✅ Transfer only what the downstream stage needs.
+
+⭐ Artifact Lifecycle
+Create
+   │
+Upload
+   │
+Store
+   │
+Download
+   │
+Use
+⭐ Troubleshooting Flow
+Artifact Problem
+        │
+        ▼
+File created?
+        │
+        ▼
+Content generated?
+        │
+        ▼
+Uploaded successfully?
+        │
+        ▼
+Correct artifact name?
+        │
+        ▼
+needs configured?
+        │
+        ▼
+Retention expired?
+⭐ Artifact vs Cache (30-Second Revision)
+Artifact	Cache
+Share outputs	Reuse dependencies
+Required	Optional
+Missing → Failure	Missing → Slower
+Used by downstream jobs	Used by future runs
