@@ -40,10 +40,12 @@ jobs:
           echo "Python     : ${{ env.PYTHON_VERSION }}"
           echo "========================================"
 
-          - name: Verify Secret Injection
-          run: |
-          echo "Testing secret injection..."
-          echo "User Name: $USER_NAME"
+      - name: Verify Secret Injection
+        run: |
+         echo "Testing secret injection..."
+         echo "User Name: $USER_NAME"
+
+          
 
       - name: Make Bash Script Executable
         run: chmod +x scripts/bash/hello.sh
