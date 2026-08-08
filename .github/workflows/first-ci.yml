@@ -11,11 +11,14 @@ env:
   APP_ENV: Development
   PYTHON_VERSION: "3.10"
 
-  USER_NAME: ${{ secrets.USER_NAME }}
+  
 
 jobs:
   create-report:
     runs-on: ubuntu-latest
+
+    env:
+      USER_NAME: ${{ secrets.USER_NAME }}
 
     steps:
       - name: Checkout Repository
@@ -72,6 +75,11 @@ jobs:
       steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Check Secret Scope
+        run: |
+          echo "Python job secret:"
+          echo "User Name: $USER_NAME"
 
       - name: Setup Python
         uses: actions/setup-python@v5
