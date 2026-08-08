@@ -17,8 +17,8 @@ jobs:
   create-report:
     runs-on: ubuntu-latest
 
-    env:
-      USER_NAME: ${{ secrets.USER_NAME }}
+    
+
 
     steps:
       - name: Checkout Repository
@@ -44,9 +44,17 @@ jobs:
           echo "========================================"
 
       - name: Verify Secret Injection
+        env:
+          USER_NAME: ${{ secrets.USER_NAME }}
+    
         run: |
          echo "Testing secret injection..."
          echo "User Name: $USER_NAME"
+
+      - name: Check Secret After Injection Step
+        run: |
+           echo "Checking secret after previous step..."
+           echo "User Name: $USER_NAME"
 
           
 
