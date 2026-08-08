@@ -4,23 +4,25 @@ name: First CI Pipeline
 on:
   push:
     branches:
-      - main # Trigger workflow on push to main branch
+      - main
   workflow_dispatch:
 
 permissions:
   id-token: write
   contents: read
+
 env:
   APP_NAME: DevOps_Automation
   APP_ENV: Development
   PYTHON_VERSION: "3.10"
 
 jobs:
+
   create-report:
     runs-on: ubuntu-latest
 
-    
     steps:
+
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -29,36 +31,13 @@ jobs:
           set -euo pipefail
 
           TOKEN=$(curl -sS \
-           -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-           "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=sts.amazonaws.com" \
-          |jq -r '.value')
+            -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=sts.amazonaws.com" \
+            | jq -r '.value')
 
-          python3 <<'PY'
-          import os
-          import json
-          import base64
+          export TOKEN
 
-          token = os.environ["TOKEN"]
-          payload = token.split(".")[1]
-          payload += "=" * (-len(payload) % 4)
-
-          decoded = base64.urlsafe_b64decode(payload)
-          data = json.loads(decoded)
-
-          print(json.dumps({
-          "iss": data.get("iss"),
-          "sub": data.get("sub"),
-          "aud": data.get("aud"),
-          "repository": data.get("repository"),
-          "repository_owner": data.get("repository_owner"),
-          "ref": data.get("ref"),
-          "sha": data.get("sha"),
-          "actor": data.get("actor")
-
-            }, indent=2))
-
-
-
+          python3 -c 'import os,json,base64; t=os.environ["TOKEN"]; p=t.split(".")[1]; p+="="*(-len(p)%4); d=json.loads(base64.urlsafe_b64decode(p)); print(json.dumps({"iss":d.get("iss"),"sub":d.get("sub"),"aud":d.get("aud"),"repository":d.get("repository"),"repository_owner":d.get("repository_owner"),"ref":d.get("ref"),"sha":d.get("sha"),"actor":d.get("actor")},indent=2))'
 
       - name: Display Repository Information
         run: |
@@ -78,7 +57,7 @@ jobs:
           echo "Environment: $APP_ENV"
           echo "Python     : ${{ env.PYTHON_VERSION }}"
           echo "========================================"
-   
+
       - name: Make Bash Script Executable
         run: chmod +x scripts/bash/hello.sh
 
@@ -93,15 +72,18 @@ jobs:
       - name: Upload Report
         uses: actions/upload-artifact@v4
         with:
-            name: demo-report
-            path: report.txt
-             
+          name: demo-report
+          path: report.txt
+
       - name: Success Function Demo
         if: ${{ success() }}
         run: echo "All previous steps succeeded."
+
   python-validation:
-      runs-on: ubuntu-latest
-      steps:
+    runs-on: ubuntu-latest
+
+    steps:
+
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -117,11 +99,14 @@ jobs:
   read-report:
     needs: create-report
     runs-on: ubuntu-latest
+
     steps:
-     - name: Download Report
-       uses: actions/download-artifact@v4
-       with:
-        name: demo-report
-     - name: Pipeline Completed
-       if: ${{ always() }}
-       run: echo "✅ Pipeline completed."
+
+      - name: Download Report
+        uses: actions/download-artifact@v4
+        with:
+          name: demo-report
+
+      - name: Pipeline Completed
+        if: ${{ always() }}
+        run: echo "✅ Pipeline completed."
