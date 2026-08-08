@@ -11,15 +11,11 @@ env:
   APP_ENV: Development
   PYTHON_VERSION: "3.10"
 
-  
-
 jobs:
   create-report:
     runs-on: ubuntu-latest
 
     
-
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -42,22 +38,7 @@ jobs:
           echo "Environment: $APP_ENV"
           echo "Python     : ${{ env.PYTHON_VERSION }}"
           echo "========================================"
-
-      - name: Verify Secret Injection
-        env:
-          USER_NAME: ${{ secrets.USER_NAME }}
-    
-        run: |
-         echo "Testing secret injection..."
-         echo "User Name: $USER_NAME"
-
-      - name: Check Secret After Injection Step
-        run: |
-           echo "Checking secret after previous step..."
-           echo "User Name: $USER_NAME"
-
-          
-
+   
       - name: Make Bash Script Executable
         run: chmod +x scripts/bash/hello.sh
 
@@ -83,11 +64,6 @@ jobs:
       steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Check Secret Scope
-        run: |
-          echo "Python job secret:"
-          echo "User Name: $USER_NAME"
 
       - name: Setup Python
         uses: actions/setup-python@v5
