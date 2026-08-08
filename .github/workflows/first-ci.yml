@@ -32,6 +32,17 @@ jobs:
           role-to-assume: arn:aws:iam::587748224379:role/GitHubActions-OIDC-Role
           aws-region: us-east-1
 
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        working-directory: labs/oidc
+        run: terraform init
+
+      - name: Terraform Plan
+        working-directory: labs/oidc
+        run: terraform plan
+
       - name: Verify AWS STS Identity
         run: |
          aws sts get-caller-identity
@@ -39,20 +50,6 @@ jobs:
       - name: Test S3 Authorization
         run: |
           aws s3 ls
-
-      - name: Inspect OIDC Claims
-        run: |
-          set -euo pipefail
-
-          TOKEN=$(curl -sS \
-            -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=sts.amazonaws.com" \
-            | jq -r '.value')
-
-          export TOKEN
-
-          python3 -c 'import os,json,base64; t=os.environ["TOKEN"]; p=t.split(".")[1]; p+="="*(-len(p)%4); d=json.loads(base64.urlsafe_b64decode(p)); print(json.dumps({"iss":d.get("iss"),"sub":d.get("sub"),"aud":d.get("aud"),"repository":d.get("repository"),"repository_owner":d.get("repository_owner"),"ref":d.get("ref"),"sha":d.get("sha"),"actor":d.get("actor")},indent=2))'
-
       - name: Display Repository Information
         run: |
           echo "========================================"
