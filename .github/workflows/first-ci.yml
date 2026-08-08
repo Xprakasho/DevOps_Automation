@@ -56,7 +56,6 @@ jobs:
           "actor": data.get("actor")
 
             }, indent=2))
-            PY
 
 
 
