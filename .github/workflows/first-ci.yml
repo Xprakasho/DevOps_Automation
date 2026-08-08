@@ -25,9 +25,6 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Inspect OIDC Claims
-        env:
-          ACTIONS_ID_TOKEN_REQUEST_URL: ${{ env.ACTIONS_ID_TOKEN_REQUEST_URL }}
-          ACTIONS_ID_TOKEN_REQUEST_TOKEN: ${{ env.ACTIONS_ID_TOKEN_REQUEST_TOKEN }}
         run: |
           set -euo pipefail
 
@@ -36,18 +33,35 @@ jobs:
            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=sts.amazonaws.com" \
           |jq -r '.value')
 
-          PAYLOAD=$(echo "$TOKEN" | cut -d '.' -f2 | base64 -d 2>/dev/null)
+          PAYLOAD=$(python3 -c
+          import sys
+          import json
+          import base64
 
-          echo "$PAYLOAD" | jq '{
-          iss,
-          sub,
-          aud,
-          repository,
-          repository_owner,
-          ref,
-          sha,
-          actor
-          }'
+          token = sys.stdin.read().strip()
+          payload = token.split(".")[1]
+          payload += "=" * (-len(payload) % 4)
+
+          decoded = base64.urlsafe_b64decode(payload)
+          data = json.loads(decoded)
+
+          selected = {
+          "iss": data.get("iss"),
+          "sub": data.get("sub"),
+          "aud": data.get("aud"),
+          "repository": data.get("repository"),
+          "repository_owner": data.get("repository_owner"),
+          "ref": data.get("ref"),
+          "sha": data.get("sha"),
+          "actor": data.get("actor")
+           }
+
+           print(json.dumps(selected, indent=2))
+          ' <<< "$TOKEN")
+
+          echo "$PAYLOAD"
+
+
 
       - name: Display Repository Information
         run: |
