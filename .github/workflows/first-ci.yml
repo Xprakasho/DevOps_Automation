@@ -36,6 +36,10 @@ jobs:
         run: |
          aws sts get-caller-identity
 
+      - name: Test S3 Authorization
+        run: |
+          aws s3 ls
+
       - name: Inspect OIDC Claims
         run: |
           set -euo pipefail
