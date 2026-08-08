@@ -33,7 +33,7 @@ jobs:
            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=sts.amazonaws.com" \
           |jq -r '.value')
 
-          PAYLOAD=$(python3 -c
+          PAYLOAD=$(python3 -c '
           import sys
           import json
           import base64
@@ -57,9 +57,7 @@ jobs:
            }
 
            print(json.dumps(selected, indent=2))
-          ' <<< "$TOKEN")
-
-          echo "$PAYLOAD"
+           '
 
 
 
