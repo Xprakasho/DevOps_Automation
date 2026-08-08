@@ -33,19 +33,19 @@ jobs:
            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=sts.amazonaws.com" \
           |jq -r '.value')
 
-          PAYLOAD=$(python3 -c '
-          import sys
+          python3 <<'PY'
+          import os
           import json
           import base64
 
-          token = sys.stdin.read().strip()
+          token = os.environ["TOKEN"]
           payload = token.split(".")[1]
           payload += "=" * (-len(payload) % 4)
 
           decoded = base64.urlsafe_b64decode(payload)
           data = json.loads(decoded)
 
-          selected = {
+          print(json.dumps({
           "iss": data.get("iss"),
           "sub": data.get("sub"),
           "aud": data.get("aud"),
@@ -54,10 +54,10 @@ jobs:
           "ref": data.get("ref"),
           "sha": data.get("sha"),
           "actor": data.get("actor")
-           }
 
-           print(json.dumps(selected, indent=2))
-           '
+            }, indent=2))
+            PY
+
 
 
 
