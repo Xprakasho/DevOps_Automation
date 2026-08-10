@@ -25,31 +25,54 @@ jobs:
 
       - name: Checkout Repository
         uses: actions/checkout@v4
-      
+
+      # ----------------------------------------
+      # AWS OIDC → STS
+      # ----------------------------------------
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v6.2.3
         with:
           role-to-assume: arn:aws:iam::587748224379:role/GitHubActions-OIDC-Role
           aws-region: us-east-1
 
+      # ----------------------------------------
+      # Terraform
+      # ----------------------------------------
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Format Check
+        working-directory: labs/oidc
+        run: terraform fmt -check
 
       - name: Terraform Init
         working-directory: labs/oidc
         run: terraform init
 
+      - name: Terraform Validate
+        working-directory: labs/oidc
+        run: terraform validate
+
       - name: Terraform Plan
         working-directory: labs/oidc
         run: terraform plan
 
+      # ----------------------------------------
+      # AWS Verification
+      # ----------------------------------------
+
       - name: Verify AWS STS Identity
-        run: |
-         aws sts get-caller-identity
+        run: aws sts get-caller-identity
 
       - name: Test S3 Authorization
-        run: |
-          aws s3 ls
+        run: aws s3 ls
+
+      # ----------------------------------------
+      # Repository Information
+      # ----------------------------------------
+
       - name: Display Repository Information
         run: |
           echo "========================================"
@@ -58,22 +81,30 @@ jobs:
           echo ""
           echo "Repository: ${{ github.repository }}"
           echo "Branch: ${{ github.ref_name }}"
-          echo "Commit SHA : ${{ github.sha }}"
+          echo "Commit SHA: ${{ github.sha }}"
           echo "Triggered by: ${{ github.actor }}"
-          echo "Workflow   : ${{ github.workflow }}"
-          echo "Run Number : ${{ github.run_number }}"
-          echo "Runner OS  : $RUNNER_OS"
+          echo "Workflow: ${{ github.workflow }}"
+          echo "Run Number: ${{ github.run_number }}"
+          echo "Runner OS: $RUNNER_OS"
           echo ""
           echo "Application: $APP_NAME"
           echo "Environment: $APP_ENV"
-          echo "Python     : ${{ env.PYTHON_VERSION }}"
+          echo "Python: ${{ env.PYTHON_VERSION }}"
           echo "========================================"
+
+      # ----------------------------------------
+      # Bash
+      # ----------------------------------------
 
       - name: Make Bash Script Executable
         run: chmod +x scripts/bash/hello.sh
 
       - name: Run Bash Script
         run: ./scripts/bash/hello.sh
+
+      # ----------------------------------------
+      # Artifact
+      # ----------------------------------------
 
       - name: Create Report
         run: |
@@ -86,9 +117,18 @@ jobs:
           name: demo-report
           path: report.txt
 
+      # ----------------------------------------
+      # Success
+      # ----------------------------------------
+
       - name: Success Function Demo
         if: ${{ success() }}
         run: echo "All previous steps succeeded."
+
+
+  # ==================================================
+  # Python Validation Job
+  # ==================================================
 
   python-validation:
     runs-on: ubuntu-latest
@@ -106,6 +146,11 @@ jobs:
       - name: Run Python Script
         if: ${{ github.ref_name == 'main' }}
         run: python scripts/python/info.py
+
+
+  # ==================================================
+  # Read Artifact Job
+  # ==================================================
 
   read-report:
     needs: create-report
