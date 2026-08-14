@@ -1,0 +1,13 @@
+========================================
+     Deployment Pre-Check
+========================================
+Checking directory: /tmp
+SUCCESS: Directory exists.
+Checking directory: /home/om
+SUCCESS: Directory exists.
+Checking file: /tmp/devops-lab/config.txt
+SUCCESS: File exists and is readable.
+Checking file: /tmp/devops-lab/config.backup
+SUCCESS: File exists and is readable.
+Checking file: /tmp/devops-lab/missing.conf
+ERROR: File does not exist.

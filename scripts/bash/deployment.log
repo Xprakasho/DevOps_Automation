@@ -1,0 +1,6 @@
+Starting directory checks...
+Checking: /tmp
+SUCCESS: Directory exists.
+Checking: /home/om
+SUCCESS: Directory exists.
+All directory checks completed successfully.
