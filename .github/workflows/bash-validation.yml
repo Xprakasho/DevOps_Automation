@@ -18,4 +18,5 @@ jobs:
           chmod +x scripts/bash/deployment-validator.sh
           ./scripts/bash/deployment-validator.sh \
             Development \
-            scripts/bash/missing.json
+            scripts/bash/application.json
+
