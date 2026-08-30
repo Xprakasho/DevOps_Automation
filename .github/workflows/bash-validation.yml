@@ -1,0 +1,21 @@
+name: Bash Validation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run deployment validator
+        run: |
+          chmod +x scripts/bash/deployment-validator.sh
+          ./scripts/bash/deployment-validator.sh \
+            Development \
+            scripts/bash/application.json
