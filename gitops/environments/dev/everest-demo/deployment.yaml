@@ -7,7 +7,7 @@ metadata:
     app: everest-demo
     project: project-everest
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: everest-demo
