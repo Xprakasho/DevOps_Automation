@@ -1,0 +1,3190 @@
+[
+  {
+    "name": "service",
+    "value": "AUSF_UDM"
+  },
+  {
+    "name": "cnfName",
+    "value": "udmval301"
+  },
+  {
+    "name": "regHelmValues",
+    "value": {
+      "global": {
+        "registry": "harbor-harbor-core.ncms.svc/udmval3",
+        "podNamePrefix": "",
+        "containerNamePrefix": "",
+        "kubernetesDnsDomain": "cluster.local",
+        "kubernetesSchedulerName": "",
+        "clustername": "ztsudmval301",
+        "datacenter": "dc1",
+        "vnfname": "udmval301",
+        "vnfMajorRelease": "25",
+        "vnfMinorRelease": "7.0",
+        "epsReleaseVersion": "25.7.0",
+        "storageClass": "csi-cephrbd",
+        "timeZone": "Europe/Madrid",
+        "lanNames": {
+          "ldapLanName": "ldaplan",
+          "lbHttp2LanName": "lbhttp2lan",
+          "hsm1LanName": "hsm1lan",
+          "hsm2LanName": "hsm2lan",
+          "triggerLanName": "triggerlan",
+          "acreencryptionLanName": "acreencryptionlan",
+          "liLanName": "lilan",
+          "liX1LanName": "lix1lan"
+        },
+        "ztslenvoylbfqdn": "ztslenvoylbservice.ztsudm3-admin-ns.svc.cluster.local.",
+        "ztsvnfname": "ztsudmval301",
+        "ztsnamespace": "ztsudm3-admin-ns",
+        "enableCassandraTls": false,
+        "enableCpuMemUsageCollect": true,
+        "isXIXEnabled": true,
+        "sbiTls": {
+          "enabled": true,
+          "enablePlaintextSupport": true
+        },
+        "nudrDr": {
+          "enabled": false,
+          "enableSdsCaching": true
+        },
+        "enableSst": false,
+        "enableKeyMgmt": false,
+        "readinessHttpProbes": {
+          "enabled": true,
+          "enableLivenessHttpProbes": true
+        },
+        "enablePodDisruptionBudget": true,
+        "compaas": {
+          "enabled": false,
+          "ztsnamespace": "default",
+          "ExternalDnsIp": "<external-dns-ip>",
+          "ExternalDnsPort": 53,
+          "ztsusername": "enRzMXp0c3NlY3JldA==",
+          "ztspassword": "am96V1h1Y24="
+        },
+        "miniudm": {
+          "enabled": false,
+          "CMIP": "0.0.0.0"
+        },
+        "ipv6": {
+          "externalInterfaces": {
+            "enabled": false
+          },
+          "internalInterfaces": {
+            "enabled": false
+          }
+        },
+        "rbac": {
+          "podSecurityControllerType": "opa",
+          "enableRbacCreation": true,
+          "customPsp": {
+            "enabled": false,
+            "pspName": "<PSP_NAME>"
+          },
+          "scc": {
+            "name": ""
+          },
+          "customRbac": {
+            "serviceAccountName": "<SERVICE_ACCOUNT_NAME>",
+            "serviceAccountNameForJobs": "<SERVICE_ACCOUNT_NAME_FOR_JOBS>"
+          }
+        },
+        "ephemeralStorageLimits": {
+          "enabled": false,
+          "maxContainerLogSize": 300
+        },
+        "security": {
+          "networkFirewall": {
+            "ingressFirewallEnabled": false,
+            "egressFirewallEnabled": false,
+            "kubeApiServerPort": 8443,
+            "dnsServerPort": 53
+          }
+        },
+        "podSecurityContext": {
+          "enabled": true,
+          "securityContext": {
+            "runAsUser": 2000,
+            "fsGroup": 2000
+          }
+        },
+        "enableSysPtraceCap": false,
+                "serviceFqdns": {
+                    "udmNfFqdn": "udm.val301.5gc.mnc001.mcc208.3gppnetwork.org", 
+                    "udmUeauthFqdn": "udmueau.val301.5gc.mnc001.mcc208.3gppnetwork.org", 
+                    "uecmFqdn": "udmuecm.val301.5gc.mnc001.mcc208.3gppnetwork.org", 
+                    "sdmFqdn": "udmsdm.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                    "eeFqdn": "udmee.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                    "mtFqdn": "udmmt.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                    "niddFqdn": "udmnidd.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                    "ppFqdn": "udmpp.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                    "nimFqdn": "udmnim.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                    "ausfNfFqdn": "ausf.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                    "ausfUeauthFqdn": "ausfauth.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                    "ausfUpuFqdn": "ausfupu.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                    "ausfSorFqdn": "ausfsor.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                    "interPlmnFqdns": {
+                        "enabled": true,
+                        "udmNfFqdn": "udm.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                        "udmUeauthFqdn": "udmueau.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                        "uecmFqdn": "udmuecm.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                        "sdmFqdn": "udmsdm.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                        "eeFqdn": "udmee.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                        "mtFqdn": "udmmt.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                        "niddFqdn": "udmnidd.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                        "ppFqdn": "udmpp.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                        "nimFqdn": "udmnim.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                        "ausfNfFqdn": "ausf.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                        "ausfUeauthFqdn": "ausfauth.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                        "ausfUpuFqdn": "ausfupu.val301.5gc.mnc001.mcc208.3gppnetwork.org",
+                        "ausfSorFqdn": "ausfsor.val301.5gc.mnc001.mcc208.3gppnetwork.org"
+                    } 
+			    },
+        "enableClusterMonitorAgent": true,
+        "cnfHealthCheck": {
+          "enabled": false,
+          "cpuThreshold": 80,
+          "memThreshold": 80
+        },
+        "awsIpMgmt": {
+          "enabled": false,
+          "imageName": "nokia-aws-ip-manager",
+          "imageTag": "3.22.0",
+          "runAsUser": "147"
+        },
+        "externalCertAuthority": {
+          "enabled": false,
+          "certs": [
+            {
+              "cert": "LDAPCliCert",
+              "applicationName": "UDMSDM",
+              "caCert": "LDAPCACert",
+              "privateKey": "LDAPCliPrivKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:nudm-sdm.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "LDAPCliCert",
+              "applicationName": "UDMEE",
+              "caCert": "LDAPCACert",
+              "privateKey": "LDAPCliPrivKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:nudm-ee.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "LDAPCliCert",
+              "applicationName": "UDMMT",
+              "caCert": "LDAPCACert",
+              "privateKey": "LDAPCliPrivKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:nudm-mt.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "LDAPCliCert",
+              "applicationName": "UDMNIDD",
+              "caCert": "LDAPCACert",
+              "privateKey": "LDAPCliPrivKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:nudm-niddau.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "LDAPCliCert",
+              "applicationName": "UDMPP",
+              "caCert": "LDAPCACert",
+              "privateKey": "LDAPCliPrivKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:nudm-pp.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "LDAPCliCert",
+              "applicationName": "UDMUECM",
+              "caCert": "LDAPCACert",
+              "privateKey": "LDAPCliPrivKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:nudm-uecm.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "LDAPCliCert",
+              "applicationName": "UDMUEAUTH",
+              "caCert": "LDAPCACert",
+              "privateKey": "LDAPCliPrivKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:nudm-ueau.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "AcReencryptCert",
+              "applicationName": "ARPF",
+              "caCert": "AcReencryptCACert",
+              "privateKey": "AcReencryptPrivKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:arpf.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "AcKeyServCert",
+              "applicationName": "ARPF",
+              "caCert": "AcKeyServCACert",
+              "privateKey": "AcKeyServPrivKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:arpf.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "SmcKeyServiceCert",
+              "applicationName": "ARPF",
+              "caCert": "SmcKeyServiceCACert",
+              "privateKey": "SmcKeyServicePrivKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:arpf.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "TriggerServiceCert",
+              "applicationName": "UDMTRIGGER",
+              "caCert": "TriggerServiceCACert",
+              "privateKey": "TriggerServicePrivKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:udmtrigger.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "H2pServCert",
+              "applicationName": "HTTP2LB",
+              "caCert": "H2pCaCert",
+              "privateKey": "H2pServPrivKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:http2lb.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "H2pCliCert",
+              "applicationName": "HTTP2LB",
+              "caCert": "H2pCliCaCert",
+              "privateKey": "H2pCliPrivKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:http2lb.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "H1pServCert",
+              "applicationName": "UDMSIM",
+              "caCert": "H1pServCaCert",
+              "privateKey": "H1pServPrivKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:sim.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "H1pCliCert",
+              "applicationName": "UDMSIM",
+              "caCert": "H1pCliCaCert",
+              "privateKey": "H1pCliPrivKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:sim.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "H1pServCertAlt",
+              "applicationName": "UDMSIM",
+              "caCert": "SIMCAAltCert",
+              "privateKey": "H1pServPrivKeyAlt",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:sim.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "H1pCliCertAlt",
+              "applicationName": "UDMSIM",
+              "caCert": "SIMCliAltCACert",
+              "privateKey": "H1pCliPrivKeyAlt",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:sim.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "TcpClPubCert",
+              "applicationName": "UDMSIM",
+              "caCert": "TcpClCaCert",
+              "privateKey": "TcpClPrivKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:sim.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "ServerRootCert",
+              "applicationName": "UDMSIM",
+              "caCert": "ServerRootCA",
+              "privateKey": "ServerRootPrivKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:sim.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "SDLDiscCliCert",
+              "applicationName": "UDMUECM",
+              "caCert": "SDLDiscSrvCA",
+              "privateKey": "SDLDiscCliKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:nudm-uecm.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "SDLDiscCliCert",
+              "applicationName": "UDMSDM",
+              "caCert": "SDLDiscSrvCA",
+              "privateKey": "SDLDiscCliKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:nudm-sdm.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "SDLDiscCliCert",
+              "applicationName": "UDMEE",
+              "caCert": "SDLDiscSrvCA",
+              "privateKey": "SDLDiscCliKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:nudm-ee.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "SDLDiscCliCert",
+              "applicationName": "UDMMT",
+              "caCert": "SDLDiscSrvCA",
+              "privateKey": "SDLDiscCliKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:nudm-mt.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "SDLDiscCliCert",
+              "applicationName": "UDMNIDD",
+              "caCert": "SDLDiscSrvCA",
+              "privateKey": "SDLDiscCliKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:nudm-niddau.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "SDLDiscCliCert",
+              "applicationName": "UDMPP",
+              "caCert": "SDLDiscSrvCA",
+              "privateKey": "SDLDiscCliKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:nudm-pp.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "SDLDiscCliCert",
+              "applicationName": "UDMUEAUTH",
+              "caCert": "SDLDiscSrvCA",
+              "privateKey": "SDLDiscCliKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "DNS:nudm-ueau.nokia.com",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "UdmCCACert",
+              "applicationName": "UDMCOMMON",
+              "caCert": "UdmCCACaCert",
+              "privateKey": "UdmCCAPrivKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            },
+            {
+              "cert": "AusfCCACert",
+              "applicationName": "AUSFCOMMON",
+              "caCert": "AusfCCACaCert",
+              "privateKey": "AusfCCAPrivKey",
+              "subject": "/C=IN/O=Nokia/CN=nokia.com",
+              "subjectAltName": "",
+              "timeToLive": "365",
+              "certOverwrite": true,
+              "caName": "",
+              "keySize": "2048",
+              "keyUsage": "",
+              "extendedKeyUsage": ""
+            }
+          ]
+        },
+        "sdsLocalCache": {
+          "disperseInterval": 10
+        },
+        "redisLocalCache": {
+          "enabled": true
+        },
+        "readinessCheckOnCrdbFailure": {
+          "enabled": false
+        },
+        "crdb": {
+          "connectionEnabled": true,
+          "tlsEnabled": true
+        },
+        "pcdb": {
+          "connectionEnabled": true,
+          "tlsEnabled": true
+        },
+        "healthCheckCli": {
+          "enableCliTls": true,
+          "cliServerPort": 30325
+        },
+        "sbiErrorLogConfig": {
+          "flushTimeoutSeconds": 120,
+          "fileTimeoutSeconds": 43200,
+          "appLoggerFilename": "sbiAppErrorLog",
+          "appLogDirectory": "/logstore/AppErrLog"
+        },
+        "enableSidfForAusf": false,
+        "rbacSecretFetch": {
+          "enabled": true,
+          "isSimEnabled": true
+        },
+        "CcaConfig": {
+          "enableCcaCertRevokeCheck": false
+        },
+        "traceConfig": {
+          "enabled": false,
+          "thirdPartyAnalyzerAddr": "<THIRD_PARTY_ANALYZER_ADDR>",
+          "thirdPartyAnalyzerPort": null,
+          "tlsConfig": {
+            "enabled": false,
+            "minTlsVersion": "TLSv1_2",
+            "maxTlsVersion": "TLSv1_3",
+            "enableCertValidation": true,
+            "enableCertRevokeCheck": false,
+            "sanValidation": {
+              "enabled": false
+            },
+            "cipherSuites": [
+              "ECDHE-ECDSA-AES128-GCM-SHA256",
+              "ECDHE-ECDSA-AES256-GCM-SHA384",
+              "ECDHE-RSA-AES256-GCM-SHA384"
+            ],
+            "ecdhCurves": [
+              "P-256"
+            ]
+          }
+        },
+        "updateAlarmCategoryInMantaRay": true,
+        "EventUuids": {
+          "nsUuid": "",
+          "cnfUuid": ""
+        },
+        "enableAdditionalNsr": "1",
+        "cvlkCustom": {
+          "image": {
+            "imageName": "nokia-udm-lcmhook",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        }
+      },
+      "lcm": {
+        "enabled": true,
+        "ztsentrypoint": "ztslenvoylbservice.ztsudm3-admin-ns.svc.cluster.local",
+        "vnfid": "udmval301",
+        "aifEnabled": "True",
+        "mantaRayPlmn": "PLMN-5GSDM",
+        "mantaRayMrName": "MRC-5GSDM/MR-UDM",
+        "preInstallJob": "enable",
+        "postInstallJob": "enable",
+        "preDeleteJob": "enable",
+        "preUpgradeJob": "enable",
+        "postUpgradeJob": "enable",
+        "preRollbackJob": "enable",
+        "postRollbackJob": "enable",
+        "loghandlerJob": "enable",
+        "postDeleteJob": "enable",
+        "readyCheckJob": "enable",
+        "enableSecretProvisioningDuringInstall": false,
+        "enableSecretProvisioningDuringUpgrade": false,
+        "preProvision": {
+          "enabled": false,
+          "edgeRepoPorts": "<EDGE_REPO_PORTS>",
+          "relativePathOfNetconfXmlOnRepository": "##TARGET_NEAR_UPLOAD_PATH##/CONFIGURATION/netconf_data.xml",
+          "relativePathOfSecretsOnRepository": "##TARGET_NEAR_UPLOAD_PATH##/CONFIGURATION/udmsecrets.tar",
+          "secureProvisionEnabled": false
+        },
+        "postUpgradeCmProvisioningJob": {
+          "enabled": false,
+          "netconfPort": "<NETCONF_PORT>",
+          "netconfSecretName": "<NETCONF_SECRET_NAME>",
+          "image": {
+            "imageName": "nokia-udm-cmprovhook",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "umProvisionPreAddJob": {
+          "enabled": false,
+          "mountSensitiveData": false
+        },
+        "umProvisionPostDeleteJob": {
+          "enabled": false
+        },
+        "image": {
+          "name": "nokia-udm-lcmhook",
+          "imageTag": "2507.2074.0",
+          "imagePullPolicy": "IfNotPresent"
+        },
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          }
+        ]
+      },
+      "vnfclusterenvoylb": {
+        "enabled": false,
+        "image": {
+          "udmenvoy": {
+            "imageName": "nokia-udm-udmenvoy",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "fbit": {
+            "imageName": "nokia-udm-lfsclient",
+            "tag": "1.25.110",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301",
+          "releasevalue": 1
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "replicaCount": 2,
+        "rollingUpdateParams": {
+          "maxSurge": 0,
+          "maxUnavailable": "20%"
+        },
+        "podDisruptionBudget": {
+          "maxUnavailable": "50%"
+        },
+        "cnfcUuid": "",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          }
+        ],
+        "podAntiAffinity": {
+          "hard": {
+            "enabled": true,
+            "topologyKeys": [
+              "kubernetes.io/hostname"
+            ]
+          },
+          "soft": {
+            "enabled": false,
+            "topologyKeysAndWeight": [
+              {
+                "topologyKey": "",
+                "weight": null
+              }
+            ]
+          }
+        }
+      },
+      "sdm": {
+        "enabled": true,
+        "image": {
+          "oam": {
+            "imageName": "nokia-udm-oam",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "sdm": {
+            "imageName": "nokia-udm-sdm",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "cip": {
+            "imageName": "nokia-udm-cip",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "udmenvoy": {
+            "imageName": "nokia-udm-udmenvoy",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "hpa": {
+          "enabled": false,
+          "minReplicas": 2,
+          "maxReplicas": 2,
+          "useCpu": {
+            "targetAvgUtilization": 60
+          },
+          "scaleDown": {
+            "stabilizationWindowSeconds": 300,
+            "periodSeconds": 60,
+            "policies": {
+              "pods": 1,
+              "percent": 5
+            },
+            "selectPolicy": "Max"
+          },
+          "scaleUp": {
+            "stabilizationWindowSeconds": 30,
+            "periodSeconds": 100,
+            "policies": {
+              "pods": 2,
+              "percent": 10
+            },
+            "selectPolicy": "Max"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301",
+          "releasevalue": 1
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "replicaCount": 2,
+        "rollingUpdateParams": {
+          "maxSurge": 0,
+          "maxUnavailable": "20%"
+        },
+        "podDisruptionBudget": {
+          "maxUnavailable": "20%"
+        },
+        "cnfcUuid": "",
+        "nodeSelector": [
+             {
+                 "key": "cnbhg1edge", 
+                 "value": "yes"
+             }
+        ],
+        "tolerations": [
+          {
+            "key": "is_edge",
+            "value": "true",
+            "effect": "NoExecute",
+            "operator": "Equal",
+            "tolerationSeconds": null
+          },
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          }
+        ],
+        "podAntiAffinity": {
+          "hard": {
+            "enabled": false,
+            "topologyKeys": [
+              ""
+            ]
+          },
+          "soft": {
+            "enabled": true,
+            "topologyKeysAndWeight": [
+              {
+                "topologyKey": "kubernetes.io/hostname",
+                "weight": 100
+              }
+            ]
+          }
+        }
+      },
+      "uecm": {
+        "enabled": true,
+        "image": {
+          "oam": {
+            "imageName": "nokia-udm-oam",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "uecm": {
+            "imageName": "nokia-udm-uecm",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "cip": {
+            "imageName": "nokia-udm-cip",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "udmenvoy": {
+            "imageName": "nokia-udm-udmenvoy",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "hpa": {
+          "enabled": false,
+          "minReplicas": 1,
+          "maxReplicas": 2,
+          "useCpu": {
+            "targetAvgUtilization": 60
+          },
+          "scaleDown": {
+            "stabilizationWindowSeconds": 300,
+            "periodSeconds": 60,
+            "policies": {
+              "pods": 1,
+              "percent": 5
+            },
+            "selectPolicy": "Max"
+          },
+          "scaleUp": {
+            "stabilizationWindowSeconds": 30,
+            "periodSeconds": 100,
+            "policies": {
+              "pods": 2,
+              "percent": 10
+            },
+            "selectPolicy": "Max"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301",
+          "releasevalue": 1
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "replicaCount": 2,
+        "rollingUpdateParams": {
+          "maxSurge": 0,
+          "maxUnavailable": "20%"
+        },
+        "podDisruptionBudget": {
+          "maxUnavailable": "20%"
+        },
+        "cnfcUuid": "",
+        "nodeSelector": [
+             {
+                 "key": "cnbhg1edge", 
+                 "value": "yes"
+             }
+        ],
+        "tolerations": [
+          {
+            "key": "is_edge",
+            "value": "true",
+            "effect": "NoExecute",
+            "operator": "Equal",
+            "tolerationSeconds": null
+          },
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          }
+        ],
+        "podAntiAffinity": {
+          "hard": {
+            "enabled": false,
+            "topologyKeys": [
+              ""
+            ]
+          },
+          "soft": {
+            "enabled": true,
+            "topologyKeysAndWeight": [
+              {
+                "topologyKey": "kubernetes.io/hostname",
+                "weight": 100
+              }
+            ]
+          }
+        }
+      },
+      "ueauthn": {
+        "enabled": true,
+        "image": {
+          "oam": {
+            "imageName": "nokia-udm-oam",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "ueauth": {
+            "imageName": "nokia-ausf-ueauth",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "cip": {
+            "imageName": "nokia-udm-cip",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "udmenvoy": {
+            "imageName": "nokia-udm-udmenvoy",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "hpa": {
+          "enabled": false,
+          "minReplicas": 1,
+          "maxReplicas": 2,
+          "useCpu": {
+            "targetAvgUtilization": 60
+          },
+          "scaleDown": {
+            "stabilizationWindowSeconds": 300,
+            "periodSeconds": 60,
+            "policies": {
+              "pods": 1,
+              "percent": 5
+            },
+            "selectPolicy": "Max"
+          },
+          "scaleUp": {
+            "stabilizationWindowSeconds": 30,
+            "periodSeconds": 100,
+            "policies": {
+              "pods": 2,
+              "percent": 10
+            },
+            "selectPolicy": "Max"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301",
+          "releasevalue": 1
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "replicaCount": 2,
+        "rollingUpdateParams": {
+          "maxSurge": 0,
+          "maxUnavailable": "20%"
+        },
+        "podDisruptionBudget": {
+          "maxUnavailable": "20%"
+        },
+        "cdbMigrationJob": {
+          "enabled": false,
+          "netconfPort": "<NETCONF_PORT>",
+          "netconfSecretName": "<NETCONF_SECRET_NAME>",
+          "initImage": {
+            "imageName": "nokia-udm-lcmhook",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "image": {
+            "imageName": "nokia-udm-cmprovhook",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "cnfcUuid": "",
+         "nodeSelector": [
+				{
+					"key": "cnbhg1worker",
+					"value": "yes"
+				}
+				],
+				"tolerations": [
+				{
+					"key": "is_worker",
+					"value": "true",
+					"effect": "NoExecute",
+					"operator": "Equal"
+				}
+				],
+        "podAntiAffinity": {
+          "hard": {
+            "enabled": false,
+            "topologyKeys": [
+              ""
+            ]
+          },
+          "soft": {
+            "enabled": true,
+            "topologyKeysAndWeight": [
+              {
+                "topologyKey": "kubernetes.io/hostname",
+                "weight": 100
+              }
+            ]
+          }
+        }
+      },
+      "udmueauth": {
+        "enabled": true,
+        "image": {
+          "ueauth": {
+            "imageName": "nokia-udm-ueauth",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "oam": {
+            "imageName": "nokia-udm-oam",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "cip": {
+            "imageName": "nokia-udm-cip",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "udmenvoy": {
+            "imageName": "nokia-udm-udmenvoy",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "hpa": {
+          "enabled": false,
+          "minReplicas": 1,
+          "maxReplicas": 2,
+          "useCpu": {
+            "targetAvgUtilization": 60
+          },
+          "scaleDown": {
+            "stabilizationWindowSeconds": 300,
+            "periodSeconds": 60,
+            "policies": {
+              "pods": 1,
+              "percent": 5
+            },
+            "selectPolicy": "Max"
+          },
+          "scaleUp": {
+            "stabilizationWindowSeconds": 30,
+            "periodSeconds": 100,
+            "policies": {
+              "pods": 2,
+              "percent": 10
+            },
+            "selectPolicy": "Max"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301",
+          "releasevalue": 1
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "replicaCount": 2,
+        "rollingUpdateParams": {
+          "maxSurge": 0,
+          "maxUnavailable": "20%"
+        },
+        "podDisruptionBudget": {
+          "maxUnavailable": "20%"
+        },
+        "cnfcUuid": "",
+        "nodeSelector": [
+             {
+                 "key": "cnbhg1edge", 
+                 "value": "yes"
+             }
+        ],
+        "tolerations": [
+          {
+            "key": "is_edge",
+            "value": "true",
+            "effect": "NoExecute",
+            "operator": "Equal",
+            "tolerationSeconds": null
+          },
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          }
+        ],
+        "podAntiAffinity": {
+          "hard": {
+            "enabled": false,
+            "topologyKeys": [
+              ""
+            ]
+          },
+          "soft": {
+            "enabled": true,
+            "topologyKeysAndWeight": [
+              {
+                "topologyKey": "kubernetes.io/hostname",
+                "weight": 100
+              }
+            ]
+          }
+        }
+      },
+      "nim": {
+        "enabled": true,
+        "image": {
+          "oam": {
+            "imageName": "nokia-udm-oam",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "nim": {
+            "imageName": "nokia-udm-nim",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "cip": {
+            "imageName": "nokia-udm-cip",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "udmenvoy": {
+            "imageName": "nokia-udm-udmenvoy",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "leaderElector": {
+            "imageName": "nokia-udm-leader-elector",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "hpa": {
+          "enabled": false,
+          "minReplicas": 2,
+          "maxReplicas": 3,
+          "useCpu": {
+            "targetAvgUtilization": 50
+          },
+          "scaleDown": {
+            "stabilizationWindowSeconds": 300,
+            "periodSeconds": 60,
+            "policies": {
+              "pods": 1,
+              "percent": 5
+            },
+            "selectPolicy": "Max"
+          },
+          "scaleUp": {
+            "stabilizationWindowSeconds": 30,
+            "periodSeconds": 100,
+            "policies": {
+              "pods": 2,
+              "percent": 10
+            },
+            "selectPolicy": "Max"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301",
+          "releasevalue": 1
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "replicaCount": 2,
+        "rollingUpdateParams": {
+          "maxSurge": 0,
+          "maxUnavailable": "20%"
+        },
+        "podDisruptionBudget": {
+          "maxUnavailable": "20%"
+        },
+        "leaderElector": {
+          "ttlInSeconds": 4
+        },
+        "cnfcUuid": "",
+         "nodeSelector": [
+				{
+					"key": "cnbhg1worker",
+					"value": "yes"
+				}
+			], 
+         "tolerations": [
+             {
+                 "key": "is_worker", 
+                 "operator": "Equal", 
+                 "value": "true", 
+                 "effect": "NoExecute", 
+                 "tolerationSeconds": 0
+             }, 
+             {
+                 "key": "node.kubernetes.io/unreachable", 
+                 "operator": "Exists", 
+                 "value": "", 
+                 "effect": "NoExecute", 
+                 "tolerationSeconds": 0
+             }
+         ],
+        "podAntiAffinity": {
+          "hard": {
+            "enabled": true,
+            "topologyKeys": [
+              "kubernetes.io/hostname"
+            ]
+          },
+          "soft": {
+            "enabled": false,
+            "topologyKeysAndWeight": [
+              {
+                "topologyKey": "",
+                "weight": null
+              }
+            ]
+          }
+        }
+      },
+      "arpf": {
+        "enabled": true,
+        "image": {
+          "oam": {
+            "imageName": "nokia-udm-oam",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "arpf": {
+            "imageName": "nokia-udm-arpf",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "cip": {
+            "imageName": "nokia-udm-cip",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "udmenvoy": {
+            "imageName": "nokia-udm-udmenvoy",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "softac": {
+            "imageName": "nokia-udm-softac-cust-std",
+            "tag": "4.4.0-10",
+            "pullPolicy": "IfNotPresent",
+            "softacRegistry": ""
+          }
+        },
+        "hpa": {
+          "enabled": false,
+          "minReplicas": 2,
+          "maxReplicas": 3,
+          "useCpu": {
+            "targetAvgUtilization": 60
+          },
+          "scaleDown": {
+            "stabilizationWindowSeconds": 300,
+            "periodSeconds": 60,
+            "policies": {
+              "pods": 1,
+              "percent": 5
+            },
+            "selectPolicy": "Max"
+          },
+          "scaleUp": {
+            "stabilizationWindowSeconds": 30,
+            "periodSeconds": 100,
+            "policies": {
+              "pods": 2,
+              "percent": 10
+            },
+            "selectPolicy": "Max"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301",
+          "releasevalue": 1,
+          "customizedSoftAc": {
+            "enabled": false
+          },
+          "hsmSshKeyLength": 2048
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "replicaCount": 2,
+        "networks": {
+          "hsm1Lan": {
+            "enabled": true
+          },
+          "hsm2Lan": {
+            "enabled": true
+          },
+          "acreencryptionLan": {
+            "enabled": true
+          }
+        },
+        "rollingUpdateParams": {
+          "maxSurge": 0,
+          "maxUnavailable": "20%"
+        },
+        "podDisruptionBudget": {
+          "maxUnavailable": 1
+        },
+        "cnfcUuid": "",
+        "nodeSelector": [
+             {
+                 "key": "cnbhg1edge", 
+                 "value": "yes"
+             }
+        ],
+        "tolerations": [
+          {
+            "key": "is_edge",
+            "value": "true",
+            "effect": "NoExecute",
+            "operator": "Equal",
+            "tolerationSeconds": null
+          },
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          }
+        ],
+        "podAntiAffinity": {
+          "hard": {
+            "enabled": true,
+            "topologyKeys": [
+              "kubernetes.io/hostname"
+            ]
+          },
+          "soft": {
+            "enabled": false,
+            "topologyKeysAndWeight": [
+              {
+                "topologyKey": "",
+                "weight": null
+              }
+            ]
+          }
+        }
+      },
+      "ee": {
+        "enabled": true,
+        "image": {
+          "oam": {
+            "imageName": "nokia-udm-oam",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "ee": {
+            "imageName": "nokia-udm-ee",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "cip": {
+            "imageName": "nokia-udm-cip",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "udmenvoy": {
+            "imageName": "nokia-udm-udmenvoy",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "hpa": {
+          "enabled": false,
+          "minReplicas": 1,
+          "maxReplicas": 2,
+          "useCpu": {
+            "targetAvgUtilization": 60
+          },
+          "scaleDown": {
+            "stabilizationWindowSeconds": 300,
+            "periodSeconds": 60,
+            "policies": {
+              "pods": 1,
+              "percent": 5
+            },
+            "selectPolicy": "Max"
+          },
+          "scaleUp": {
+            "stabilizationWindowSeconds": 30,
+            "periodSeconds": 100,
+            "policies": {
+              "pods": 2,
+              "percent": 10
+            },
+            "selectPolicy": "Max"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301",
+          "releasevalue": 1
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "replicaCount": 2,
+        "rollingUpdateParams": {
+          "maxSurge": 0,
+          "maxUnavailable": "20%"
+        },
+        "podDisruptionBudget": {
+          "maxUnavailable": "20%"
+        },
+        "cnfcUuid": "",
+        "nodeSelector": [
+             {
+                 "key": "cnbhg1edge", 
+                 "value": "yes"
+             }
+        ],
+        "tolerations": [
+          {
+            "key": "is_edge",
+            "value": "true",
+            "effect": "NoExecute",
+            "operator": "Equal",
+            "tolerationSeconds": null
+          },
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          }
+        ],
+        "podAntiAffinity": {
+          "hard": {
+            "enabled": false,
+            "topologyKeys": [
+              ""
+            ]
+          },
+          "soft": {
+            "enabled": true,
+            "topologyKeysAndWeight": [
+              {
+                "topologyKey": "kubernetes.io/hostname",
+                "weight": 100
+              }
+            ]
+          }
+        }
+      },
+      "mt": {
+        "enabled": false,
+        "image": {
+          "oam": {
+            "imageName": "nokia-udm-oam",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "mt": {
+            "imageName": "nokia-udm-mt",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "cip": {
+            "imageName": "nokia-udm-cip",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "udmenvoy": {
+            "imageName": "nokia-udm-udmenvoy",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "hpa": {
+          "enabled": false,
+          "minReplicas": 1,
+          "maxReplicas": 2,
+          "useCpu": {
+            "targetAvgUtilization": 60
+          },
+          "scaleDown": {
+            "stabilizationWindowSeconds": 300,
+            "periodSeconds": 60,
+            "policies": {
+              "pods": 1,
+              "percent": 5
+            },
+            "selectPolicy": "Max"
+          },
+          "scaleUp": {
+            "stabilizationWindowSeconds": 30,
+            "periodSeconds": 100,
+            "policies": {
+              "pods": 2,
+              "percent": 10
+            },
+            "selectPolicy": "Max"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301",
+          "releasevalue": 1
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "replicaCount": 1,
+        "rollingUpdateParams": {
+          "maxSurge": 0,
+          "maxUnavailable": "20%"
+        },
+        "podDisruptionBudget": {
+          "maxUnavailable": "20%"
+        },
+        "cnfcUuid": "",
+        "nodeSelector": [
+             {
+                 "key": "cnbhg1edge", 
+                 "value": "yes"
+             }
+        ],
+        "tolerations": [
+          {
+            "key": "is_edge",
+            "value": "true",
+            "effect": "NoExecute",
+            "operator": "Equal",
+            "tolerationSeconds": null
+          },
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          }
+        ],
+        "podAntiAffinity": {
+          "hard": {
+            "enabled": false,
+            "topologyKeys": [
+              ""
+            ]
+          },
+          "soft": {
+            "enabled": true,
+            "topologyKeysAndWeight": [
+              {
+                "topologyKey": "kubernetes.io/hostname",
+                "weight": 100
+              }
+            ]
+          }
+        }
+      },
+      "ssau": {
+        "enabled": false
+      },
+      "pp": {
+        "enabled": true,
+        "image": {
+          "oam": {
+            "imageName": "nokia-udm-oam",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "pp": {
+            "imageName": "nokia-udm-pp",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "cip": {
+            "imageName": "nokia-udm-cip",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "udmenvoy": {
+            "imageName": "nokia-udm-udmenvoy",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "hpa": {
+          "enabled": false,
+          "minReplicas": 1,
+          "maxReplicas": 2,
+          "useCpu": {
+            "targetAvgUtilization": 60
+          },
+          "scaleDown": {
+            "stabilizationWindowSeconds": 300,
+            "periodSeconds": 60,
+            "policies": {
+              "pods": 1,
+              "percent": 5
+            },
+            "selectPolicy": "Max"
+          },
+          "scaleUp": {
+            "stabilizationWindowSeconds": 30,
+            "periodSeconds": 100,
+            "policies": {
+              "pods": 2,
+              "percent": 10
+            },
+            "selectPolicy": "Max"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301",
+          "releasevalue": 1
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "replicaCount": 2,
+        "rollingUpdateParams": {
+          "maxSurge": 0,
+          "maxUnavailable": "20%"
+        },
+        "podDisruptionBudget": {
+          "maxUnavailable": "20%"
+        },
+        "cnfcUuid": "",
+        "nodeSelector": [
+             {
+                 "key": "cnbhg1edge", 
+                 "value": "yes"
+             }
+        ],
+        "tolerations": [
+          {
+            "key": "is_edge",
+            "value": "true",
+            "effect": "NoExecute",
+            "operator": "Equal",
+            "tolerationSeconds": null
+          },
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          }
+        ],
+        "podAntiAffinity": {
+          "hard": {
+            "enabled": false,
+            "topologyKeys": [
+              ""
+            ]
+          },
+          "soft": {
+            "enabled": true,
+            "topologyKeysAndWeight": [
+              {
+                "topologyKey": "kubernetes.io/hostname",
+                "weight": 100
+              }
+            ]
+          }
+        }
+      },
+      "sor": {
+        "enabled": true,
+        "image": {
+          "oam": {
+            "imageName": "nokia-udm-oam",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "sor": {
+            "imageName": "nokia-ausf-sor",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "cip": {
+            "imageName": "nokia-udm-cip",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "udmenvoy": {
+            "imageName": "nokia-udm-udmenvoy",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "hpa": {
+          "enabled": false,
+          "minReplicas": 1,
+          "maxReplicas": 2,
+          "useCpu": {
+            "targetAvgUtilization": 60
+          },
+          "scaleDown": {
+            "stabilizationWindowSeconds": 300,
+            "periodSeconds": 60,
+            "policies": {
+              "pods": 1,
+              "percent": 5
+            },
+            "selectPolicy": "Max"
+          },
+          "scaleUp": {
+            "stabilizationWindowSeconds": 30,
+            "periodSeconds": 100,
+            "policies": {
+              "pods": 2,
+              "percent": 10
+            },
+            "selectPolicy": "Max"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301",
+          "releasevalue": 1
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "replicaCount": 2,
+        "rollingUpdateParams": {
+          "maxSurge": 0,
+          "maxUnavailable": "20%"
+        },
+        "podDisruptionBudget": {
+          "maxUnavailable": "20%"
+        },
+        "cnfcUuid": "",
+         "nodeSelector": [
+			{
+					"key": "cnbhg1worker",
+					"value": "yes"
+				}
+				], 
+         "tolerations": [
+             {
+                 "key": "is_worker", 
+                 "operator": "Equal", 
+                 "value": "true", 
+                 "effect": "NoExecute", 
+                 "tolerationSeconds": 0
+             }, 
+             {
+                 "key": "node.kubernetes.io/unreachable", 
+                 "operator": "Exists", 
+                 "value": "", 
+                 "effect": "NoExecute", 
+                 "tolerationSeconds": 0
+             }
+         ],
+        "podAntiAffinity": {
+          "hard": {
+            "enabled": false,
+            "topologyKeys": [
+              ""
+            ]
+          },
+          "soft": {
+            "enabled": true,
+            "topologyKeysAndWeight": [
+              {
+                "topologyKey": "kubernetes.io/hostname",
+                "weight": 100
+              }
+            ]
+          }
+        }
+      },
+      "upu": {
+        "enabled": true,
+        "image": {
+          "oam": {
+            "imageName": "nokia-udm-oam",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "upu": {
+            "imageName": "nokia-ausf-upu",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "cip": {
+            "imageName": "nokia-udm-cip",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "udmenvoy": {
+            "imageName": "nokia-udm-udmenvoy",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "hpa": {
+          "enabled": false,
+          "minReplicas": 1,
+          "maxReplicas": 2,
+          "useCpu": {
+            "targetAvgUtilization": 60
+          },
+          "scaleDown": {
+            "stabilizationWindowSeconds": 300,
+            "periodSeconds": 60,
+            "policies": {
+              "pods": 1,
+              "percent": 5
+            },
+            "selectPolicy": "Max"
+          },
+          "scaleUp": {
+            "stabilizationWindowSeconds": 30,
+            "periodSeconds": 100,
+            "policies": {
+              "pods": 2,
+              "percent": 10
+            },
+            "selectPolicy": "Max"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301",
+          "releasevalue": 1
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "replicaCount": 2,
+        "rollingUpdateParams": {
+          "maxSurge": 0,
+          "maxUnavailable": "20%"
+        },
+        "podDisruptionBudget": {
+          "maxUnavailable": "20%"
+        },
+        "cnfcUuid": "",
+         "nodeSelector": [
+			{
+					"key": "cnbhg1worker",
+					"value": "yes"
+				}
+				], 
+         "tolerations": [
+             {
+                 "key": "is_worker", 
+                 "operator": "Equal", 
+                 "value": "true", 
+                 "effect": "NoExecute", 
+                 "tolerationSeconds": 0
+             }, 
+             {
+                 "key": "node.kubernetes.io/unreachable", 
+                 "operator": "Exists", 
+                 "value": "", 
+                 "effect": "NoExecute", 
+                 "tolerationSeconds": 0
+             }
+         ],
+        "podAntiAffinity": {
+          "hard": {
+            "enabled": false,
+            "topologyKeys": [
+              ""
+            ]
+          },
+          "soft": {
+            "enabled": true,
+            "topologyKeysAndWeight": [
+              {
+                "topologyKey": "kubernetes.io/hostname",
+                "weight": 100
+              }
+            ]
+          }
+        }
+      },
+      "nidd": {
+        "enabled": false,
+        "image": {
+          "oam": {
+            "imageName": "nokia-udm-oam",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "nidd": {
+            "imageName": "nokia-udm-nidd",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "cip": {
+            "imageName": "nokia-udm-cip",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "udmenvoy": {
+            "imageName": "nokia-udm-udmenvoy",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "hpa": {
+          "enabled": false,
+          "minReplicas": 1,
+          "maxReplicas": 2,
+          "useCpu": {
+            "targetAvgUtilization": 60
+          },
+          "scaleDown": {
+            "stabilizationWindowSeconds": 300,
+            "periodSeconds": 60,
+            "policies": {
+              "pods": 1,
+              "percent": 5
+            },
+            "selectPolicy": "Max"
+          },
+          "scaleUp": {
+            "stabilizationWindowSeconds": 30,
+            "periodSeconds": 100,
+            "policies": {
+              "pods": 2,
+              "percent": 10
+            },
+            "selectPolicy": "Max"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301",
+          "releasevalue": 1
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "replicaCount": 1,
+        "rollingUpdateParams": {
+          "maxSurge": 0,
+          "maxUnavailable": "20%"
+        },
+        "podDisruptionBudget": {
+          "maxUnavailable": "20%"
+        },
+        "cnfcUuid": "",
+        "nodeSelector": [
+             {
+                 "key": "cnbhg1edge", 
+                 "value": "yes"
+             }
+        ],
+        "tolerations": [
+          {
+            "key": "is_edge",
+            "value": "true",
+            "effect": "NoExecute",
+            "operator": "Equal",
+            "tolerationSeconds": null
+          },
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          }
+        ],
+        "podAntiAffinity": {
+          "hard": {
+            "enabled": false,
+            "topologyKeys": [
+              ""
+            ]
+          },
+          "soft": {
+            "enabled": true,
+            "topologyKeysAndWeight": [
+              {
+                "topologyKey": "kubernetes.io/hostname",
+                "weight": 100
+              }
+            ]
+          }
+        }
+      },
+      "trigger": {
+        "enabled": true,
+        "image": {
+          "oam": {
+            "imageName": "nokia-udm-oam",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "trigger": {
+            "imageName": "nokia-udm-trigger",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "udmenvoy": {
+            "imageName": "nokia-udm-udmenvoy",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301",
+          "releasevalue": 1
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "replicaCount": 2,
+        "rollingUpdateParams": {
+          "maxSurge": 0,
+          "maxUnavailable": "20%"
+        },
+        "podDisruptionBudget": {
+          "maxUnavailable": "50%"
+        },
+        "cnfcUuid": "",
+        "nodeSelector": [
+             {
+                 "key": "cnbhg1edge", 
+                 "value": "yes"
+             }
+        ],
+        "tolerations": [
+          {
+            "key": "is_edge",
+            "value": "true",
+            "effect": "NoExecute",
+            "operator": "Equal",
+            "tolerationSeconds": null
+          },
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          }
+        ],
+        "podAntiAffinity": {
+          "hard": {
+            "enabled": false,
+            "topologyKeys": [
+              ""
+            ]
+          },
+          "soft": {
+            "enabled": true,
+            "topologyKeysAndWeight": [
+              {
+                "topologyKey": "kubernetes.io/hostname",
+                "weight": 100
+              }
+            ]
+          }
+        }
+      },
+      "sim": {
+        "enabled": true,
+        "image": {
+          "oam": {
+            "imageName": "nokia-udm-oam",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "sim": {
+            "imageName": "nokia-udm-cpr",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "cip": {
+            "imageName": "nokia-udm-cip",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "httpcs": {
+            "imageName": "nokia-udm-httpcs",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "udmenvoy": {
+            "imageName": "nokia-udm-udmenvoy",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "xix": {
+            "imageName": "nokia-udm-xix",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "transporter": {
+            "imageName": "nokia-udm-transporter",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "leaderElector": {
+            "imageName": "nokia-udm-leader-elector",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "migrateli": {
+            "imageName": "nokia-udm-migrateli",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "hpa": {
+          "enabled": false,
+          "minReplicas": 2,
+          "maxReplicas": 3,
+          "useCpu": {
+            "targetAvgUtilization": 50
+          },
+          "scaleDown": {
+            "stabilizationWindowSeconds": 300,
+            "periodSeconds": 60,
+            "policies": {
+              "pods": 1,
+              "percent": 5
+            },
+            "selectPolicy": "Max"
+          },
+          "scaleUp": {
+            "stabilizationWindowSeconds": 30,
+            "periodSeconds": 100,
+            "policies": {
+              "pods": 2,
+              "percent": 10
+            },
+            "selectPolicy": "Max"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301",
+          "releasevalue": 1,
+          "coredump": "disabled"
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "replicaCount": 2,
+        "rollingUpdateParams": {
+          "maxSurge": 0,
+          "maxUnavailable": "20%"
+        },
+        "podDisruptionBudget": {
+          "maxUnavailable": 1
+        },
+        "X2PduBufferingEnabled": true,
+        "X1KeepaliveSupport": true,
+        "leaderElector": {
+          "ttlInSeconds": 4
+        },
+        "cnfcUuid": "",
+        "nodeSelector": [
+             {
+                 "key": "cnbhg1edge", 
+                 "value": "yes"
+             }
+        ],
+        "tolerations": [
+          {
+            "key": "is_edge",
+            "value": "true",
+            "effect": "NoExecute",
+            "operator": "Equal",
+            "tolerationSeconds": null
+          },
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          }
+        ],
+        "podAntiAffinity": {
+          "hard": {
+            "enabled": true,
+            "topologyKeys": [
+              "kubernetes.io/hostname"
+            ]
+          },
+          "soft": {
+            "enabled": false,
+            "topologyKeysAndWeight": [
+              {
+                "topologyKey": "",
+                "weight": null
+              }
+            ]
+          }
+        }
+      },
+      "ccasapache": {
+        "enabled": false,
+        "minconfig": {
+          "Enabled": false
+        },
+        "resources": {
+          "requests": {
+            "memory": "5873Mi",
+            "cpu": "2000m"
+          },
+          "limits": {
+            "memory": "5873Mi",
+            "cpu": "4000m"
+          }
+        },
+        "image": {
+          "registry": "harbor-harbor-core.ncms.svc/udmval3",
+          "repository": "nokia-udm-ccas_apache",
+          "tag": "2.0.4-rocky8-4.1.7-152",
+          "pullPolicy": "IfNotPresent",
+          "uds": {
+            "imageName": "nokia-udm-udscasschema",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "udmenvoy": {
+            "imageName": "nokia-udm-udmenvoy",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "fbit": {
+            "imageName": "nokia-udm-lfsclient",
+            "tag": "1.25.110",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "admin": {
+          "image": {
+            "registry": "harbor-harbor-core.ncms.svc/udmval3",
+            "repository": "nokia-udm-kubectl",
+            "tag": "1.34.6-rocky8-nano-20260324",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "certmgr": {
+          "image": {
+            "registry": "",
+            "repository": "",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301",
+          "releasevalue": 1
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "replicaCount": 3,
+        "podDisruptionBudget": {
+          "maxUnavailable": 1
+        },
+        "unifiedLogging": {
+          "syslog": {
+            "enabled": true,
+            "host": "ztslenvoylbservice.ztsudm3-admin-ns.svc.cluster.local"
+          }
+        },
+        "cassandra": {
+          "replicaStaggerFactor": 10
+        },
+        "cnfcUuid": "",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          }
+        ],
+        "podAntiAffinity": {
+          "hard": {
+            "enabled": true,
+            "topologyKeys": [
+              "kubernetes.io/hostname"
+            ]
+          },
+          "soft": {
+            "enabled": true,
+            "topologyKeysAndWeight": [
+              {
+                "topologyKey": "topology.kubernetes.io/zone",
+                "weight": 50
+              }
+            ]
+          }
+        }
+      },
+      "sidf": {
+        "enabled": true,
+        "image": {
+          "oam": {
+            "imageName": "nokia-udm-oam",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "udmenvoy": {
+            "imageName": "nokia-udm-udmenvoy",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "cip": {
+            "imageName": "nokia-udm-cip",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "sidf": {
+            "imageName": "nokia-udm-sidf",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "hpa": {
+          "enabled": false,
+          "minReplicas": 2,
+          "maxReplicas": 3,
+          "useCpu": {
+            "targetAvgUtilization": 60
+          },
+          "scaleDown": {
+            "stabilizationWindowSeconds": 300,
+            "periodSeconds": 60,
+            "policies": {
+              "pods": 1,
+              "percent": 5
+            },
+            "selectPolicy": "Max"
+          },
+          "scaleUp": {
+            "stabilizationWindowSeconds": 30,
+            "periodSeconds": 100,
+            "policies": {
+              "pods": 2,
+              "percent": 10
+            },
+            "selectPolicy": "Max"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301",
+          "releasevalue": 1
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "replicaCount": 2,
+        "rollingUpdateParams": {
+          "maxSurge": 0,
+          "maxUnavailable": "20%"
+        },
+        "podDisruptionBudget": {
+          "maxUnavailable": 1
+        },
+        "cnfcUuid": "",
+         "nodeSelector": [
+				{
+					"key": "cnbhg1worker",
+					"value": "yes"
+				}
+			], 
+         "tolerations": [
+             {
+                 "key": "is_worker", 
+                 "operator": "Equal", 
+                 "value": "true", 
+                 "effect": "NoExecute", 
+                 "tolerationSeconds": 0
+             }, 
+             {
+                 "key": "node.kubernetes.io/unreachable", 
+                 "operator": "Exists", 
+                 "value": "", 
+                 "effect": "NoExecute", 
+                 "tolerationSeconds": 0
+             }
+         ],
+        "podAntiAffinity": {
+          "hard": {
+            "enabled": true,
+            "topologyKeys": [
+              "kubernetes.io/hostname"
+            ]
+          },
+          "soft": {
+            "enabled": false,
+            "topologyKeysAndWeight": [
+              {
+                "topologyKey": "",
+                "weight": null
+              }
+            ]
+          }
+        }
+      },
+      "http2lb": {
+        "enabled": true,
+        "image": {
+          "http2lb": {
+            "imageName": "nokia-udm-http2lb",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "http2lbservicereg": {
+            "imageName": "nokia-udm-http2lb-servicereg",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "udmenvoy": {
+            "imageName": "nokia-udm-udmenvoy",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "oam": {
+            "imageName": "nokia-udm-oam",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "http2lbmgmt": {
+            "imageName": "nokia-udm-http2lb-mgmt",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301",
+          "releasevalue": 1,
+          "concurrency": 8
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "replicaCount": 2,
+        "connectionAlarmForAbnormalTerm": {
+          "enabled": true,
+          "monitorIntervalSeconds": 60
+        },
+        "http2ProtocolOptions": {
+          "maxConcurrentStreams": 10000
+        },
+        "ingress": {
+          "plaintext": {
+            "listenPort": 8080
+          },
+          "tls": {
+            "listenPort": 8443
+          }
+        },
+        "egress": {
+          "connTimeout": 2,
+          "idleConnTimeout": 3600
+        },
+        "extConnFailureDetection": {
+          "enabled": false,
+          "monitoringDurationInSeconds": 60,
+          "failureThreshold": 10
+        },
+        "circuitBreakerLimits": {
+          "uecm": 40000,
+          "sdm": 40000,
+          "ee": 40000,
+          "mt": 40000,
+          "nidd": 40000,
+          "pp": 40000,
+          "ueauthn": 40000,
+          "udmueauthn": 40000,
+          "nim": 40000,
+          "upuprotection": 40000,
+          "sorprotection": 40000,
+          "egress": 40000,
+          "egressTls": 40000
+        },
+        "externalTls": {
+          "serverTls": {
+            "minTlsVersion": "TLSv1_2",
+            "maxTlsVersion": "TLSv1_3",
+            "enableCertValidation": true,
+            "enableCertRevokeCheck": false,
+            "sanValidation": {
+              "enabled": false
+            },
+            "cipherSuites": [
+              "ECDHE-ECDSA-AES128-GCM-SHA256",
+              "ECDHE-ECDSA-AES256-GCM-SHA384",
+              "ECDHE-RSA-AES256-GCM-SHA384",
+			  "ECDHE-RSA-AES128-GCM-SHA256"
+            ],
+            "ecdhCurves": [
+              "P-256"
+            ]
+          },
+          "clientTls": {
+            "minTlsVersion": "TLSv1_2",
+            "maxTlsVersion": "TLSv1_3",
+            "enableCertValidation": true,
+            "enableCertRevokeCheck": false,
+            "sni": {
+              "customSni": {
+                "enabled": false,
+                "sniHostname": "<SNI_HOST_NAME>"
+              },
+              "autoSni": {
+                "enabled": false,
+                "autoSanValidation": false
+              }
+            },
+            "sanValidation": {
+              "enabled": false
+            },
+            "cipherSuites": [
+              "ECDHE-ECDSA-AES128-GCM-SHA256",
+              "ECDHE-ECDSA-AES256-GCM-SHA384",
+              "ECDHE-RSA-AES256-GCM-SHA384",
+			  "ECDHE-RSA-AES128-GCM-SHA256"
+            ],
+            "ecdhCurves": [
+              "P-256"
+            ]
+          }
+        },
+        "rollingUpdateParams": {
+          "maxSurge": 0,
+          "maxUnavailable": "20%"
+        },
+        "podDisruptionBudget": {
+          "maxUnavailable": 1
+        },
+        "cnfcUuid": "",
+        "nodeSelector": [
+             {
+                 "key": "cnbhg1edge", 
+                 "value": "yes"
+             }
+        ],
+        "tolerations": [
+          {
+            "key": "is_edge",
+            "value": "true",
+            "effect": "NoExecute",
+            "operator": "Equal",
+            "tolerationSeconds": null
+          },
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          }
+        ],
+        "podAntiAffinity": {
+          "hard": {
+            "enabled": true,
+            "topologyKeys": [
+              "kubernetes.io/hostname"
+            ]
+          },
+          "soft": {
+            "enabled": false,
+            "topologyKeysAndWeight": [
+              {
+                "topologyKey": "",
+                "weight": null
+              }
+            ]
+          }
+        }
+      },
+      "tcpproxy": {
+        "enabled": true,
+        "image": {
+          "tcpproxy": {
+            "imageName": "nokia-udm-udmenvoy",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "oam": {
+            "imageName": "nokia-udm-oam",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "tcpproxymgmt": {
+            "imageName": "nokia-udm-tcpproxy-mgmt",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "ingress": {
+          "listenPort": 7443
+        },
+        "circuitBreakerLimits": {
+          "maxConnections": 10
+        },
+        "environment": {
+          "duvalue": "udmval301",
+          "releasevalue": 1
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "podDisruptionBudget": {
+          "maxUnavailable": "100%"
+        },
+        "cnfcUuid": "",
+        "nodeSelector": [
+             {
+                 "key": "cnbhg1edge", 
+                 "value": "yes"
+             }
+        ],
+        "tolerations": [
+          {
+            "key": "is_edge",
+            "value": "true",
+            "effect": "NoExecute",
+            "operator": "Equal",
+            "tolerationSeconds": null
+          },
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          }
+        ]
+      },
+      "clustermonitoragent": {
+        "enabled": true,
+        "image": {
+          "ztsclustermonitoragent": {
+            "imageName": "nokia-udm-ztsclustermonitoragent",
+            "tag": "1.25.244",
+            "pullPolicy": "IfNotPresent"
+          },
+          "fbit": {
+            "imageName": "nokia-udm-lfsclient",
+            "tag": "1.25.110",
+            "pullPolicy": "IfNotPresent"
+          },
+          "udmenvoy": {
+            "imageName": "nokia-udm-udmenvoy",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "uhc": {
+            "imageName": "nokia-udm-uhc",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301",
+          "releasevalue": 1
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "replicaCount": 1,
+        "rollingUpdateParams": {
+          "maxSurge": "25%",
+          "maxUnavailable": "25%"
+        },
+        "podDisruptionBudget": {
+          "maxUnavailable": "100%"
+        },
+        "PodVisibleAtMantaRayOnInstantiation": false,
+        "cnfcUuid": "",
+         "nodeSelector": [
+				{
+					"key": "cnbhg1worker",
+					"value": "yes"
+				}
+			], 
+         "tolerations": [
+             {
+                 "key": "is_worker", 
+                 "operator": "Equal", 
+                 "value": "true", 
+                 "effect": "NoExecute", 
+                 "tolerationSeconds": 0
+             }, 
+             {
+                 "key": "node.kubernetes.io/unreachable", 
+                 "operator": "Exists", 
+                 "value": "", 
+                 "effect": "NoExecute", 
+                 "tolerationSeconds": 0
+             }
+         ]
+      },
+      "crdbredisio": {
+        "enabled": true,
+        "server": {
+          "count": 6,
+          "image": {
+            "name": "nokia-udm-cvlk-valkey",
+            "tag": "1.0.7-1676",
+            "pullPolicy": "IfNotPresent"
+          },
+          "pdb": {
+            "minAvailable": "50%"
+          },
+         "nodeSelector": [
+			{
+					"key": "cnbhg1worker",
+					"value": "yes"
+				}
+				], 
+         "tolerations": [
+             {
+                 "key": "is_worker", 
+                 "operator": "Equal", 
+                 "value": "true", 
+                 "effect": "NoExecute", 
+                 "tolerationSeconds": 0
+             }, 
+             {
+                 "key": "node.kubernetes.io/unreachable", 
+                 "operator": "Exists", 
+                 "value": "", 
+                 "effect": "NoExecute", 
+                 "tolerationSeconds": 0
+             }
+         ],
+          "podAntiAffinity": {
+            "hard": {
+              "enabled": false,
+              "topologyKeys": [
+                ""
+              ]
+            },
+            "soft": {
+              "enabled": true,
+              "topologyKeysAndWeight": [
+                {
+                  "topologyKey": "topology.kubernetes.io/zone",
+                  "weight": 50
+                },
+                {
+                  "topologyKey": "kubernetes.io/hostname",
+                  "weight": 100
+                }
+              ]
+            }
+          }
+        },
+        "rolemon": {
+          "image": {
+            "name": "nokia-udm-cvlk-rolemon",
+            "tag": "1.0.7-1676",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "admin": {
+          "image": {
+            "name": "nokia-udm-cvlk-admin",
+            "tag": "1.0.7-1676",
+            "pullPolicy": "IfNotPresent"
+          },
+          "pdb": {
+            "maxUnavailable": "100%"
+          },
+          "tolerations": [
+            {
+              "key": "node.kubernetes.io/not-ready",
+              "value": "",
+              "effect": "NoExecute",
+              "operator": "Exists",
+              "tolerationSeconds": 0
+            },
+            {
+              "key": "node.kubernetes.io/unreachable",
+              "value": "",
+              "effect": "NoExecute",
+              "operator": "Exists",
+              "tolerationSeconds": 0
+            }
+          ]
+        },
+        "cluster": {
+          "shardCount": 3
+        },
+        "certmgr": {
+          "image": {
+            "name": "nokia-udm-certmgr",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301"
+        },
+        "istio": {
+          "enabled": null
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "unifiedLogging": {
+          "syslog": {
+            "enabled": true,
+            "host": "ztslenvoylbservice.ztsudm3-admin-ns.svc.cluster.local"
+          }
+        },
+        "adminCnfcUuid": "",
+        "serverCnfcUuid": ""
+      },
+      "pcdb": {
+        "enabled": true,
+        "server": {
+          "count": 6,
+          "image": {
+            "name": "nokia-udm-cvlk-valkey",
+            "tag": "1.0.7-1676",
+            "pullPolicy": "IfNotPresent"
+          },
+          "pdb": {
+            "minAvailable": "50%"
+          },
+         "nodeSelector": [
+				{
+					"key": "cnbhg1worker",
+					"value": "yes"
+				}
+			], 
+         "tolerations": [
+             {
+                 "key": "is_worker", 
+                 "operator": "Equal", 
+                 "value": "true", 
+                 "effect": "NoExecute", 
+                 "tolerationSeconds": 0
+             }, 
+             {
+                 "key": "node.kubernetes.io/unreachable", 
+                 "operator": "Exists", 
+                 "value": "", 
+                 "effect": "NoExecute", 
+                 "tolerationSeconds": 0
+             }
+         ]
+        },
+        "rolemon": {
+          "image": {
+            "name": "nokia-udm-cvlk-rolemon",
+            "tag": "1.0.7-1676",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "admin": {
+          "image": {
+            "name": "nokia-udm-cvlk-admin",
+            "tag": "1.0.7-1676",
+            "pullPolicy": "IfNotPresent"
+          },
+          "pdb": {
+            "maxUnavailable": "100%"
+          },
+         "nodeSelector": [
+				{
+					"key": "cnbhg1worker",
+					"value": "yes"
+				}
+			], 
+         "tolerations": [
+             {
+                 "key": "is_worker", 
+                 "operator": "Equal", 
+                 "value": "true", 
+                 "effect": "NoExecute", 
+                 "tolerationSeconds": 0
+             }, 
+             {
+                 "key": "node.kubernetes.io/unreachable", 
+                 "operator": "Exists", 
+                 "value": "", 
+                 "effect": "NoExecute", 
+                 "tolerationSeconds": 0
+             }
+         ]
+        },
+        "cluster": {
+          "shardCount": 3
+        },
+        "certmgr": {
+          "image": {
+            "name": "nokia-udm-certmgr",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301"
+        },
+        "istio": {
+          "enabled": null
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "unifiedLogging": {
+          "syslog": {
+            "enabled": true,
+            "host": "ztslenvoylbservice.ztsudm3-admin-ns.svc.cluster.local"
+          }
+        },
+        "adminCnfcUuid": "",
+        "serverCnfcUuid": "",
+        "pcdbPasswordJob": {
+          "image": {
+            "name": "nokia-udm-lcmhook",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        }
+      },
+      "debugassist": {
+        "enabled": false,
+        "image": {
+          "debugassist": {
+            "imageName": "nokia-udm-debugassist",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          },
+          "fbit": {
+            "imageName": "nokia-udm-lfsclient",
+            "tag": "1.25.110",
+            "pullPolicy": "IfNotPresent"
+          },
+          "udmenvoy": {
+            "imageName": "nokia-udm-udmenvoy",
+            "tag": "2507.2074.0",
+            "pullPolicy": "IfNotPresent"
+          }
+        },
+        "environment": {
+          "duvalue": "udmval301",
+          "releasevalue": 1
+        },
+        "priorityClass": {
+          "enabled": true,
+          "customPriorityClassName": ""
+        },
+        "replicaCount": 1,
+        "rollingUpdateParams": {
+          "maxSurge": 0,
+          "maxUnavailable": "20%"
+        },
+        "podDisruptionBudget": {
+          "maxUnavailable": 1
+        },
+        "cnfcUuid": "",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "value": "",
+            "effect": "NoExecute",
+            "operator": "Exists",
+            "tolerationSeconds": 0
+          }
+        ],
+        "podAntiAffinity": {
+          "hard": {
+            "enabled": true,
+            "topologyKeys": [
+              "kubernetes.io/hostname"
+            ]
+          },
+          "soft": {
+            "enabled": false,
+            "topologyKeysAndWeight": [
+              {
+                "topologyKey": "",
+                "weight": null
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+]

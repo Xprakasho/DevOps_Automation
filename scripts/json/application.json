@@ -1,0 +1,30 @@
+{
+  "application": {
+    "name": "DevOps_Automation",
+    "environment": "Development"
+  },
+  "deployment": {
+    "replicas": 2,
+    "image": {
+      "repository": "nginx",
+      "tag": "1.27"
+    }
+  },
+  "servers": [
+    {
+      "name": "web-01",
+      "role": "web",
+      "enabled": true
+    },
+    {
+      "name": "app-01",
+      "role": "application",
+      "enabled": true
+    },
+    {
+      "name": "db-01",
+      "role": "database",
+      "enabled": false
+    }
+  ]
+}
