@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: everest-demo
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Xprakasho/DevOps_Automation.git
+    targetRevision: main
+    path: gitops/environments/dev/everest-demo
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: everest-dev
+
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
