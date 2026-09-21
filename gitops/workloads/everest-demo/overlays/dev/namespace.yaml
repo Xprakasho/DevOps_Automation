@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: everest-dev
+  labels:
+    project: project-everest
+    environment: dev

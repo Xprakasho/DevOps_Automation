@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/Xprakasho/DevOps_Automation.git
     targetRevision: main
-    path: gitops/environments/dev/everest-demo
+    path: gitops/workloads/everest-demo/overlays/dev
 
   destination:
     server: https://kubernetes.default.svc
