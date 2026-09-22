@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: everest-demo-staging
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Xprakasho/DevOps_Automation.git
+    targetRevision: main
+    path: gitops/workloads/everest-demo/overlays/staging
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: everest-staging
+
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
