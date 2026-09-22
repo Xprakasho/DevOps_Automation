@@ -5,7 +5,12 @@ namespace: everest-dev
 
 resources:
   - ../../base
+  - namespace.yaml
 
 replicas:
   - name: everest-demo
     count: 3
+
+images:
+  - name: nginx
+    newTag: "1.28"    
