@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: everest-staging
+  labels:
+    project: project-everest
+    environment: staging
