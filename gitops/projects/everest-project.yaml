@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+
+metadata:
+  name: everest-project
+  namespace: argocd
+
+spec:
+  description: Project Everest GitOps boundary
+
+  sourceRepos:
+    - https://github.com/Xprakasho/DevOps_Automation.git
+
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: everest-dev
+
+    - server: https://kubernetes.default.svc
+      namespace: everest-staging
+
+  clusterResourceWhitelist:
+    - group: ""
+      kind: Namespace
+
+  namespaceResourceWhitelist:
+    - group: ""
+      kind: Service
+
+    - group: apps
+      kind: Deployment
