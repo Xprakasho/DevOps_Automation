@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: argocd
+
+data:
+  policy.csv: |
+    p, role:everest-viewer, projects, get, everest-project, allow
+    p, role:everest-viewer, applications, get, everest-project/*, allow
+    g, everest-viewer, role:everest-viewer
