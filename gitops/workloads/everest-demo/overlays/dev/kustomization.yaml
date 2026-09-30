@@ -6,6 +6,11 @@ namespace: everest-dev
 resources:
   - ../../base
   - namespace.yaml
+  - secrets/secretstore.yaml
+  - secrets/externalsecret.yaml
+
+patches:
+  - path: deployment-secret-patch.yaml
 
 replicas:
   - name: everest-demo
@@ -13,4 +18,4 @@ replicas:
 
 images:
   - name: nginx
-    newTag: "1.28"    
+    newTag: "1.28"
