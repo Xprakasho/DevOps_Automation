@@ -28,3 +28,9 @@ spec:
 
     - group: apps
       kind: Deployment
+
+    - group: external-secrets.io
+      kind: SecretStore
+
+    - group: external-secrets.io
+      kind: ExternalSecret
