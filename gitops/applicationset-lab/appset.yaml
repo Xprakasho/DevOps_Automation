@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: applicationset-lab
+  namespace: argocd
+
+spec:
+  generators:
+    - list:
+        elements:
+          - environment: dev
+            namespace: applicationset-lab-dev
+          - environment: staging
+            namespace: applicationset-lab-staging
+
+  template:
+    metadata:
+      name: 'applicationset-lab-{{environment}}'
+
+    spec:
+      project: default
+
+      source:
+        repoURL: https://github.com/Xprakasho/DevOps_Automation.git
+        targetRevision: main
+        path: gitops/applicationset-lab/workload
+
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}'
+
+      syncPolicy:
+        automated:
+          prune: false
+          selfHeal: true
+
+        syncOptions:
+          - CreateNamespace=true
