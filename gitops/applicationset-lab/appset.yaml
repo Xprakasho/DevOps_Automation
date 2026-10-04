@@ -12,8 +12,6 @@ spec:
             namespace: applicationset-lab-dev
           - environment: staging
             namespace: applicationset-lab-staging
-          - environment: test
-            namespace: applicationset-lab-test
 
   template:
     metadata:
