@@ -12,8 +12,6 @@ spec:
           namespace: applicationset-lab-dev
         - environment: staging
           namespace: applicationset-lab-staging
-        - environment: preserve
-          namespace: applicationset-lab-preserve
 
   syncPolicy:
     preserveResourcesOnDeletion: true      
