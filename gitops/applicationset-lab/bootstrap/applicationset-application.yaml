@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: applicationset-lab-appset
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Xprakasho/DevOps_Automation.git
+    targetRevision: main
+    path: gitops/applicationset-lab/appset
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
