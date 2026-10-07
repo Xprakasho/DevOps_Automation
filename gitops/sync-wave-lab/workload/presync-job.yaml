@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sync-wave-presync
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: presync
+          image: busybox:1.36
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "PreSync hook executed"
+              echo "Preparing synchronization"
