@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sync-wave-lab
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Xprakasho/DevOps_Automation.git
+    targetRevision: main
+    path: gitops/sync-wave-lab/workload
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: sync-wave-lab
+
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true

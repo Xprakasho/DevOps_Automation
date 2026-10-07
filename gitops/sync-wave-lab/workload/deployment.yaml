@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sync-wave-demo
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: sync-wave-demo
+
+  template:
+    metadata:
+      labels:
+        app: sync-wave-demo
+
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.30
+
+          envFrom:
+            - configMapRef:
+                name: sync-wave-config
+
+          ports:
+            - containerPort: 80
+
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
