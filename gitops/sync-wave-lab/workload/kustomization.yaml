@@ -5,3 +5,4 @@ resources:
   - configmap.yaml
   - deployment.yaml
   - presync-job.yaml
+  - postsync-job.yaml
