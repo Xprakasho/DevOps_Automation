@@ -5,3 +5,9 @@
 *.tfstate.*
 crash.log
 crash.*.log
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/

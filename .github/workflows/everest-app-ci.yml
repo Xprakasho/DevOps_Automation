@@ -35,6 +35,15 @@ jobs:
 
       - name: Build container image
         run: docker build -f app/Dockerfile -t everest-demo:${{ github.sha }} app/
+      - name: Scan container image with Trivy
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: image
+          image-ref: everest-demo:${{ github.sha }}
+          format: table
+          severity: CRITICAL,HIGH
+          ignore-unfixed: true
+          exit-code: "0"
 
       - name: Start test container
         run: docker run -d --name everest-test -p 8080:8080 everest-demo:${{ github.sha }}
