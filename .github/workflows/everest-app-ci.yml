@@ -1,0 +1,64 @@
+name: Project Everest Application CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "app/**"
+      - ".github/workflows/everest-app-ci.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "app/**"
+      - ".github/workflows/everest-app-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-build:
+    name: Test and build application
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run unit tests
+        run: python -m unittest discover -s app -p 'test_*.py' -v
+
+      - name: Build container image
+        run: docker build -f app/Dockerfile -t everest-demo:${{ github.sha }} app/
+
+      - name: Start test container
+        run: docker run -d --name everest-test -p 8080:8080 everest-demo:${{ github.sha }}
+
+      - name: Verify application health
+        run: |
+          for attempt in {1..20}; do
+            if curl --fail --silent http://localhost:8080/healthz; then
+              echo
+              echo "Application health check passed."
+              exit 0
+            fi
+            sleep 1
+          done
+
+          echo "Application health check failed."
+          docker logs everest-test
+          exit 1
+
+      - name: Verify application response
+        run: |
+          curl --fail --silent http://localhost:8080/
+          echo
+
+      - name: Clean up test container
+        if: always()
+        run: docker rm -f everest-test || true
