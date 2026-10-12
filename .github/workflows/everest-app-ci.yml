@@ -15,6 +15,7 @@ on:
 
 permissions:
   contents: read
+  packages: write
 
 jobs:
   test-and-build:
@@ -43,7 +44,7 @@ jobs:
           format: table
           severity: CRITICAL,HIGH
           ignore-unfixed: true
-          exit-code: "0"
+          exit-code: "1"
 
       - name: Start test container
         run: docker run -d --name everest-test -p 8080:8080 everest-demo:${{ github.sha }}
@@ -67,6 +68,25 @@ jobs:
         run: |
           curl --fail --silent http://localhost:8080/
           echo
+
+      - name: Log in to GitHub Container Registry
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Tag image for GHCR
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: |
+          docker tag everest-demo:${GITHUB_SHA} \
+            ghcr.io/xprakasho/everest-demo:${GITHUB_SHA}
+
+      - name: Publish image to GHCR
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: |
+          docker push ghcr.io/xprakasho/everest-demo:${GITHUB_SHA}
 
       - name: Clean up test container
         if: always()
