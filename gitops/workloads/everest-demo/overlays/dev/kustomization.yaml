@@ -6,8 +6,6 @@ namespace: everest-dev
 resources:
   - ../../base
   - namespace.yaml
-  - secrets/secretstore.yaml
-  - secrets/externalsecret.yaml
 
 patches:
   - path: deployment-app-patch.yaml
