@@ -10,12 +10,8 @@ resources:
   - secrets/externalsecret.yaml
 
 patches:
-  - path: deployment-secret-patch.yaml
+  - path: deployment-app-patch.yaml
 
 replicas:
   - name: everest-demo
     count: 3
-
-images:
-  - name: nginx
-    newTag: "1.28"
