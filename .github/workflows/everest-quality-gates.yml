@@ -61,7 +61,7 @@ jobs:
         run: python -m pip install yamllint==1.37.1
 
       - name: Lint active Everest YAML and workflows
-        run:  >-
+        run: >-
           yamllint -c .yamllint -s
           gitops/applications/
           gitops/projects/
