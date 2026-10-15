@@ -1,0 +1,10 @@
+extends: default
+
+rules:
+  document-start:
+    present: false
+  line-length:
+    max: 160
+    level: warning
+  trailing-spaces: enable
+  new-line-at-end-of-file: enable

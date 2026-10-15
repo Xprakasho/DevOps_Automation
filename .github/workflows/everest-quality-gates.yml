@@ -61,7 +61,12 @@ jobs:
         run: python -m pip install yamllint==1.37.1
 
       - name: Lint active Everest YAML and workflows
-        run: yamllint -s gitops/applications/ gitops/projects/ gitops/workloads/everest-demo/ .github/workflows/everest-quality-gates.yml
+        run:  >-
+          yamllint -c .yamllint -s
+          gitops/applications/
+          gitops/projects/
+          gitops/workloads/everest-demo/
+          .github/workflows/everest-quality-gates.yml
 
       - name: Install actionlint
         run: |
