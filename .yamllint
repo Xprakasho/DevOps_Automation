@@ -8,3 +8,9 @@ rules:
     level: warning
   trailing-spaces: enable
   new-line-at-end-of-file: enable
+  truthy:
+    allowed-values:
+      - "true"
+      - "false"
+    check-keys: false
+
