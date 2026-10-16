@@ -67,9 +67,7 @@ jobs:
       - name: Verify application response
         run: |
           curl --fail --silent --show-error http://localhost:8080/ \
-            | python -c 'import json, sys; data = json.load(sys.stdin);
-             assert data["application"] == "project-everest"; assert data["version"] == "1.1.0";
-             assert data["status"] == "running"; print("Application response validation passed.")'
+            | python app/validate_response.py
       - name: Clean up test container
         if: always()
         run: docker rm -f everest-test || true
