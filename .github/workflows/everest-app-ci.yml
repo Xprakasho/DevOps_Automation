@@ -80,7 +80,7 @@ jobs:
       - name: Tag image for GHCR
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         run: |
-          docker tag everest-demo:${GITHUB_SHA} \
+          docker tag "everest-demo:${GITHUB_SHA}" \
             "ghcr.io/xprakasho/everest-demo:${GITHUB_SHA}"
 
       - name: Publish image to GHCR
