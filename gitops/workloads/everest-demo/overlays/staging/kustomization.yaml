@@ -13,4 +13,4 @@ replicas:
 
 images:
   - name: nginx
-    newTag: "1.28"    
+    newTag: "1.28"
