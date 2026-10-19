@@ -68,10 +68,19 @@ jobs:
         run: |
           curl --fail --silent --show-error http://localhost:8080/ \
             | python app/validate_response.py
+      - name: Save validated container image
+        if: success()
+        run: docker save "everest-demo:${GITHUB_SHA}" -o everest-image.tar
       - name: Clean up test container
         if: always()
         run: docker rm -f everest-test || true
-
+      - name: Upload validated container image
+        uses: actions/upload-artifact@v4
+        with:
+          name: everest-image-${{ github.sha }}
+          path: everest-image.tar
+          if-no-files-found: error
+          retention-days: 1
   publish:
     name: Publish validated image to GHCR
     needs: validate
@@ -82,11 +91,13 @@ jobs:
       packages: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Download validated container image
+        uses: actions/download-artifact@v4
+        with:
+          name: everest-image-${{ github.sha }}
 
-      - name: Build container image
-        run: docker build -f app/Dockerfile -t everest-demo:${{ github.sha }} app/
+      - name: Load validated container image
+        run: docker load --input everest-image.tar
 
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
@@ -103,6 +114,30 @@ jobs:
       - name: Publish image to GHCR
         run: docker push "ghcr.io/xprakasho/everest-demo:${GITHUB_SHA}"
 
+      - name: Verify published image content
+        env:
+          IMAGE: ghcr.io/xprakasho/everest-demo:${{ github.sha }}
+        run: |
+          local_image_id="$(docker image inspect --format '{{.Id}}' "everest-demo:${GITHUB_SHA}")"
+          remote_config_digest="$(
+            docker buildx imagetools inspect --raw "$IMAGE" |
+              jq -r '.config.digest // empty'
+          )"
+
+          if [[ -z "$remote_config_digest" ]]; then
+            echo "ERROR: Could not read the published image config digest."
+            exit 1
+          fi
+
+          echo "Validated image ID: $local_image_id"
+          echo "Published image config digest: $remote_config_digest"
+
+          if [[ "$local_image_id" != "$remote_config_digest" ]]; then
+            echo "ERROR: Published image does not match the validated image."
+            exit 1
+          fi
+
+          echo "Verified: published image matches the validated image."
       - name: Log out of GitHub Container Registry
         if: always()
         run: docker logout ghcr.io
