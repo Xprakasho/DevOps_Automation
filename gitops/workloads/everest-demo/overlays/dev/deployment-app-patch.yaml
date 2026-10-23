@@ -8,7 +8,7 @@ spec:
       containers:
         - $patch: replace
         - name: everest-demo
-          image: ghcr.io/xprakasho/everest-demo:d4a91cc8916501e1f655baa2c3c96b9f132756b
+          image: ghcr.io/xprakasho/everest-demo:b5ee7eb9ec7315f7b9b87bd38ed0e49e545421d9
           ports:
             - name: http
               containerPort: 8080
