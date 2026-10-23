@@ -1,5 +1,4 @@
 name: Project Everest Application CI
-
 on:
   push:
     branches: [main]
@@ -64,16 +63,20 @@ jobs:
 
           docker logs everest-test
           exit 1
+
       - name: Verify application response
         run: |
           curl --fail --silent --show-error http://localhost:8080/ \
             | python app/validate_response.py
+
       - name: Save validated container image
         if: success()
         run: docker save "everest-demo:${GITHUB_SHA}" -o everest-image.tar
+
       - name: Clean up test container
         if: always()
         run: docker rm -f everest-test || true
+
       - name: Upload validated container image
         uses: actions/upload-artifact@v4
         with:
@@ -81,11 +84,13 @@ jobs:
           path: everest-image.tar
           if-no-files-found: error
           retention-days: 1
+
   publish:
     name: Publish validated image to GHCR
     needs: validate
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+
     permissions:
       contents: read
       packages: write
@@ -138,6 +143,131 @@ jobs:
           fi
 
           echo "Verified: published image matches the validated image."
+
       - name: Log out of GitHub Container Registry
         if: always()
         run: docker logout ghcr.io
+
+  promote-dev:
+    name: Validate and propose dev promotion
+    needs: publish
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Update dev image reference
+        env:
+          IMAGE: ghcr.io/xprakasho/everest-demo:${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import os
+          import re
+          from pathlib import Path
+
+          image = os.environ["IMAGE"]
+
+          if not re.fullmatch(
+              r"ghcr\.io/xprakasho/everest-demo:[0-9a-f]{40}",
+              image,
+          ):
+              raise SystemExit(f"Unexpected image reference: {image}")
+
+          path = Path(
+              "gitops/workloads/everest-demo/overlays/dev/"
+              "deployment-app-patch.yaml"
+          )
+          lines = path.read_text().splitlines(keepends=True)
+
+          matches = [
+              i for i, line in enumerate(lines)
+              if line.lstrip().startswith("image:")
+              and "ghcr.io/xprakasho/everest-demo:" in line
+          ]
+
+          if len(matches) != 1:
+              raise SystemExit(
+                  f"Expected exactly one Everest image field; found {len(matches)}"
+              )
+
+          index = matches[0]
+          indent = lines[index][:len(lines[index]) - len(lines[index].lstrip())]
+          lines[index] = f"{indent}image: {image}\n"
+          path.write_text("".join(lines))
+
+          print(f"Updated dev image to {image}")
+          PY
+
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v4
+
+      - name: Install yamllint
+        run: python -m pip install yamllint==1.37.1
+
+      - name: Lint dev GitOps manifests
+        run: |
+          yamllint -c .yamllint -s \
+            gitops/workloads/everest-demo/overlays/dev/
+
+      - name: Render and validate dev manifests
+        env:
+          IMAGE: ghcr.io/xprakasho/everest-demo:${{ github.sha }}
+        run: |
+          kubectl kustomize \
+            gitops/workloads/everest-demo/overlays/dev \
+            > /tmp/everest-dev-rendered.yaml
+
+          python - <<'PY'
+          import os
+          from pathlib import Path
+
+          rendered = Path("/tmp/everest-dev-rendered.yaml").read_text()
+          image = os.environ["IMAGE"]
+
+          if rendered.count(f"image: {image}") != 1:
+              raise SystemExit(
+                  "Expected exactly one occurrence of the promoted image"
+              )
+
+          if "namespace: everest-dev" not in rendered:
+              raise SystemExit("Expected namespace everest-dev")
+
+          print("Dev manifests rendered and expected image verified.")
+          PY
+
+      - name: Create or update dev promotion PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: main
+          branch: automation/promote-everest-dev
+          delete-branch: true
+          add-paths: |
+            gitops/workloads/everest-demo/overlays/dev/deployment-app-patch.yaml
+          commit-message: "gitops: promote Everest image in dev"
+          title: "gitops: promote Everest image to dev"
+          body: |
+            ## Project Everest dev promotion
+
+            This PR updates the dev GitOps image reference to the
+            immutable commit SHA produced by the successful application CI run.
+
+            ### Validation
+            - Application CI passed, including tests, image scan and smoke tests.
+            - Published image identity was verified.
+            - Dev GitOps YAML lint and Kustomize render validation passed.
+
+            ### Scope
+            - Updates only the dev deployment image reference.
+            - Leaves staging unchanged.
+            - Does not deploy to a Kubernetes cluster.
+
+            Please review before merging.
