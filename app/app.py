@@ -6,7 +6,7 @@ def response_for(path):
     if path == "/":
         return 200, {
             "application": "project-everest",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "status": "running",
         }
 

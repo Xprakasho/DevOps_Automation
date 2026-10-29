@@ -8,7 +8,7 @@ def main():
 
     expected = {
         "application": "project-everest",
-        "version": "1.2.0",
+        "version": "1.3.0",
         "status": "running",
     }
 
