@@ -7,10 +7,9 @@ resources:
   - ../../base
   - namespace.yaml
 
+patches:
+  - path: deployment-app-patch.yaml
+
 replicas:
   - name: everest-demo
     count: 4
-
-images:
-  - name: nginx
-    newTag: "1.28"
